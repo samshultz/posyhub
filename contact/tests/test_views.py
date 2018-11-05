@@ -1,22 +1,34 @@
 from django.test import TestCase
 from django.urls import reverse
 from contact.forms import ContactForm
-from contact.models import CompanyDetail, CompanyAddress
+from django.test import RequestFactory
 from django.core import mail
 
+from contact.models import CompanyDetail, CompanyAddress
+from contact.views import ContactView
+
 class ContactViewTest(TestCase):
-        
+    
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def get_request_using_request_factory(self):
+        req = self.factory.get(reverse("contact:contact-us"))
+        response = ContactView.as_view()(req)
+
+        return response
+
     def test_contact_in_context(self):
-        response = self.client.get(reverse("contact:contact-us"))
-        self.assertIn('contact', response.context)
+        response = self.get_request_using_request_factory()
+        self.assertIn('contact', response.context_data)
     
     def test_contact_is_none_if_no_item_exist_in_the_db(self):
-        response = self.client.get(reverse("contact:contact-us"))
-        self.assertIsNone(response.context['contact'])
+        response = self.get_request_using_request_factory()
+        self.assertIsNone(response.context_data['contact'])
 
     def test_form_in_context(self):
-        response = self.client.get(reverse("contact:contact-us"))
-        self.assertIn('form', response.context)
+        response = self.get_request_using_request_factory()
+        self.assertIn('form', response.context_data)
     
     def test_form_in_context_is_contact_form_instance(self):
         response = self.client.get(reverse("contact:contact-us"))
@@ -29,8 +41,8 @@ class ContactViewTest(TestCase):
 
         CompanyAddress.objects.create(company=company_detail, address="222, Baker street.")
         
-        response = self.client.get(reverse("contact:contact-us"))
-        self.assertTrue(isinstance(response.context['contact'], CompanyDetail))
+        response = self.get_request_using_request_factory()
+        self.assertTrue(isinstance(response.context_data['contact'], CompanyDetail))
 
 
     def test_contact_equals_first_element_by_pk_if_more_than_one_item_exists_in_db(self):
@@ -47,17 +59,13 @@ class ContactViewTest(TestCase):
         CompanyAddress.objects.create(company=company_detail, address="222, Baker street.")
         CompanyAddress.objects.create(company=company_detail2, address="56, Kardesh Barnea")
         
-        response = self.client.get(reverse("contact:contact-us"))
-        self.assertEqual(str(company_detail), str(response.context['contact']))
+        response = self.get_request_using_request_factory()
+        self.assertEqual(str(company_detail), str(response.context_data['contact']))
 
     def test_message_sent_when_form_is_valid(self):
-        self.client.post(reverse('contact:contact-us'), 
-                                    dict(name="jon", 
+        req = self.factory.post(reverse('contact:contact-us'), dict(name="jon", 
                                          phone_no="+36309304993", 
                                          message="skdjkal"))
+        
+        ContactView.as_view()(req)
         self.assertEqual(len(mail.outbox), 1)
-
-class ContactFormView(TestCase):
-
-    def test_view_only_accepts_post_request(self):
-        self.client.get(reverse('contact:contact-us'))
