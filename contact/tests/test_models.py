@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 class CompanyDetailTest(TestCase):
 
     def test_string_representation(self):
-        company_detail = CompanyDetail.objects.create(
+        company_detail = CompanyDetail(
                 name="Posyhub international",
                 phone_no="08163143403",
                 email="taiwogabrielsamuel@gmail.com"
@@ -17,7 +17,7 @@ class CompanyDetailTest(TestCase):
             test that the get email method returns a list
 
         """
-        company_detail = CompanyDetail.objects.create(
+        company_detail = CompanyDetail(
                 name="Posyhub international",
                 phone_no="08163143403",
                 email="taiwogabrielsamuel@gmail.com"
@@ -25,7 +25,7 @@ class CompanyDetailTest(TestCase):
         self.assertTrue(isinstance(company_detail.get_emails(), list))
 
     def test_get_emails_returns_a_string_when_email_is_absent(self):
-        company_detail = CompanyDetail.objects.create(
+        company_detail = CompanyDetail(
                 name="Posyhub international",
                 phone_no="08163143403",
         )
@@ -35,7 +35,7 @@ class CompanyDetailTest(TestCase):
         """ tests that get_emails method returns a list with one
         item when only one email exists.
         """
-        company_detail = CompanyDetail.objects.create(
+        company_detail = CompanyDetail(
                 name="Posyhub international",
                 phone_no="08163143403",
                 email="taiwogabrielsamuel@gmail.com"
@@ -44,7 +44,7 @@ class CompanyDetailTest(TestCase):
         self.assertTrue(company_detail.get_emails())
 
     def test_doesnt_raise_a_validation_error_when_no_email_is_entered(self):
-        company_detail = CompanyDetail.objects.create(
+        company_detail = CompanyDetail(
                     name="Posyhub international",
                     phone_no="08163143403",
         )
@@ -54,25 +54,27 @@ class CompanyDetailTest(TestCase):
 
 
         with self.assertRaises(ValidationError):
-            company_detail = CompanyDetail.objects.create(
+            company_detail = CompanyDetail(
                     name="Posyhub international",
                     phone_no="08163143403",
                     email="taiwogabrielsamuel@gmail"
             )
+            company_detail.save()
 
     def test_raises_validation_error_with_more_than_one_invalid_email(self):
         with self.assertRaises(ValidationError):
-            company_detail = CompanyDetail.objects.create(
+            company_detail = CompanyDetail(
                     name="Posyhub international",
                     phone_no="08163143403",
                     email="taiwogabrielsamuel@gmail, admin@posyhub.com"
             )
+            company_detail.save()
 
     def test_get_phone_numbers_returns_a_list_of_one_item(self):
         """ get_phone_numbers returns a list of one item if only one phone
         number is provided"""
 
-        company_detail = CompanyDetail.objects.create(
+        company_detail = CompanyDetail(
                     name="Posyhub international",
                     phone_no="08163143403",
                     email="taiwogabrielsamuel@gmail.com, admin@posyhub.com"
@@ -83,7 +85,7 @@ class CompanyDetailTest(TestCase):
         self.assertEqual(len(company_detail.get_phone_numbers()), 1)
 
     def test_get_phone_numbers_returns_a_list_gt_one_item_if_gt_one_item_is_given(self):
-        company_detail = CompanyDetail.objects.create(
+        company_detail = CompanyDetail(
                     name="Posyhub international",
                     phone_no="08165443403, +234816123308",
                     email="taiwogabrielsamuel@gmail.com, admin@posyhub.com"
@@ -91,13 +93,13 @@ class CompanyDetailTest(TestCase):
         self.assertGreater(len(company_detail.get_phone_numbers()), 1)
 
     def test_get_addresses_returns_list_of_addresses(self):
-        company = CompanyDetail.objects.create(
+        company = CompanyDetail(
                     name="Posyhub international",
                     phone_no="08165443403, +234816123308",
                     email="taiwogabrielsamuel@gmail.com, admin@posyhub.com"
             )
 
-        address = CompanyAddress.objects.create(
+        CompanyAddress(
             company=company,
             address="A very long address"
             )
@@ -105,13 +107,13 @@ class CompanyDetailTest(TestCase):
 
 class CompanyAddressTest(TestCase):
     def test_string_representation(self):
-        company = CompanyDetail.objects.create(
+        company = CompanyDetail(
                     name="Posyhub international",
                     phone_no="08165443403, +234816123308",
                     email="taiwogabrielsamuel@gmail.com, admin@posyhub.com"
             )
 
-        address = CompanyAddress.objects.create(
+        address = CompanyAddress(
             company=company,
             address="A very long address"
             )
