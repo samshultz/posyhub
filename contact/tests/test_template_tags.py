@@ -86,3 +86,14 @@ class ContactTemplateTagsTest(TestCase):
 
         self.assertIn("207 Chicago, LA", rendered)
         self.assertIn("63 New York, LA", rendered)
+    
+    def test_get_company_phone_numbers_renders(self):
+        self.create_company_detail(phone_no="08239849348, 0392931028")
+
+        template = Template("{% load contact_tags %}"
+            "{% get_company_phone_numbers as num %}" 
+            "{% for i in num %}{{ i }}{% endfor %}")
+        rendered = template.render(Context({}))
+
+        self.assertIn("08239849348", rendered)
+        self.assertIn("0392931028", rendered)
