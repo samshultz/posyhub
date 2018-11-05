@@ -1,8 +1,21 @@
+from unittest.mock import patch, MagicMock
 from django.test import TestCase
 from contact.models import CompanyDetail, CompanyAddress
 from django.core.exceptions import ValidationError
 
+
 class CompanyDetailTest(TestCase):
+
+    @patch('contact.models.CompanyDetail.save', MagicMock(name="save"))
+    def test_can_save(self):
+        company_detail = CompanyDetail(
+                name="Posyhub international",
+                phone_no="08163143403",
+                email="taiwogabrielsamuel@gmail.com"
+        )
+        company_detail.save()
+        self.assertTrue(CompanyDetail.save.called) # NOQA
+        self.assertEqual(CompanyDetail.save.call_count, 1) # NOQA
 
     def test_string_representation(self):
         company_detail = CompanyDetail(
@@ -106,13 +119,30 @@ class CompanyDetailTest(TestCase):
         self.assertTrue(isinstance(company.get_addresses(), list))
 
 class CompanyAddressTest(TestCase):
+
+    @patch('contact.models.CompanyAddress.save', MagicMock(name="save"))
+    def test_can_save(self):
+        company_detail = CompanyDetail(
+                name="Posyhub international",
+                phone_no="08163143403",
+                email="taiwogabrielsamuel@gmail.com"
+        )
+        
+        addr = CompanyAddress(
+            company=company_detail,
+            address="A very long address"
+            )
+        addr.save()
+        self.assertTrue(CompanyAddress.save.called) # NOQA
+        self.assertEqual(CompanyAddress.save.call_count, 1) # NOQA
+
     def test_string_representation(self):
         company = CompanyDetail(
                     name="Posyhub international",
                     phone_no="08165443403, +234816123308",
                     email="taiwogabrielsamuel@gmail.com, admin@posyhub.com"
             )
-
+        
         address = CompanyAddress(
             company=company,
             address="A very long address"
