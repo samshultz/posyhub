@@ -16,5 +16,5 @@ class ContactFormTest(TestCase):
     def test_can_send_mail_with_valid_data(self):
         form = ContactForm(dict(name="jon", phone_no="+36309304993", message="skdjkal"))
         form.send_email(dict(name="jon", phone_no="+36309304993", message="skdjkal"))
-        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(len(mail.outbox), 1) # NOQA
         self.assertEqual(mail.outbox[0].subject, "A new message from jon a potential client")

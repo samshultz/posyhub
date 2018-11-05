@@ -4,6 +4,7 @@ from .models import CompanyAddress, CompanyDetail
 
 class AddressInline(admin.TabularInline):
     model = CompanyAddress
+    extra = 1
 
 
 class CompanyDetailAdmin(admin.ModelAdmin):

@@ -120,4 +120,4 @@ class CompanyAddressTest(TestCase):
         self.assertEqual(str(address), "Posyhub international")
 
     def test_verbose_name_plural(self):
-        self.assertEqual(CompanyAddress._meta.verbose_name_plural, "company addresses")
+        self.assertEqual(CompanyAddress._meta.verbose_name_plural, "company addresses") # NOQA

@@ -68,4 +68,12 @@ class ContactViewTest(TestCase):
                                          message="skdjkal"))
         
         ContactView.as_view()(req)
-        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(len(mail.outbox), 1) # NOQA
+
+    def test_redirect_after_form_submission(self):
+        req = self.factory.post(reverse('contact:contact-us'), dict(name="jon", 
+                                         phone_no="+36309304993", 
+                                         message="skdjkal"))
+        
+        response = ContactView.as_view()(req)
+        self.assertEqual(response.status_code, 302)
