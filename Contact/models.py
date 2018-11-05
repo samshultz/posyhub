@@ -14,6 +14,14 @@ class CompanyDetail(models.Model):
                                         " email separate them by a comma"))
 
 
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super(CompanyDetail, self).save(*args, **kwargs)
+
+
     def clean(self):
         if self.email:
             email_list = self.get_emails()
@@ -30,12 +38,6 @@ class CompanyDetail(models.Model):
     def get_addresses(self):
         return [addr.address for addr in self.address.all()]
 
-    def save(self, *args, **kwargs):
-        self.clean()
-        super(CompanyDetail, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.name
 
 class CompanyAddress(models.Model):
     company = models.ForeignKey(CompanyDetail,
