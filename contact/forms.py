@@ -11,10 +11,9 @@ class ContactForm(forms.Form):
     message = forms.CharField(label="Message*", required=True, widget=forms.Textarea)
 
     def send_email(self, data):
-                
-        subject = "A new message from {} owner of {}".format(data['name'], 
-                                                             data['name_of_business'])
-        from_email = data['email'] if data['email'] else 'owner@gmail.com'
+        name = data.get('name', "")
+        from_email = data.get('email', 'owner@gmail.com')
+        subject = "A new message from {} a potential client".format(name)
         send_mail(subject, data['message'], from_email, ["support@posyhub.com"])
         return True
         
