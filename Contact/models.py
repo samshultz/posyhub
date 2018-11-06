@@ -1,21 +1,23 @@
 from django.db import models
 from django.core.validators import validate_email
+from django.utils.translation import ugettext_lazy as _
+
 
 class CompanyDetail(models.Model):
-    name = models.CharField("Company's Name", max_length=300)
-    phone_no = models.CharField("Phone Number",
+    name = models.CharField(_("Company's Name"), max_length=300)
+    phone_no = models.CharField(_("Phone Number"),
                                 max_length=500,
-                                help_text=("if your company has more than one"
+                                help_text=_("if your company has more than one"
                                            " phone number, separate them with"
                                            " a comma"))
-    email = models.CharField("Email Addresses", blank=True,
+    email = models.CharField(_("Email Addresses"), blank=True,
                              max_length=500,
-                             help_text=("If your company has more than one"
+                             help_text=_("If your company has more than one"
                                         " email separate them by a comma"))
 
 
     def __str__(self):
-        return self.name
+        return _(self.name)
 
     def save(self, *args, **kwargs):
         self.clean()
@@ -47,7 +49,7 @@ class CompanyAddress(models.Model):
 
 
     class Meta:
-        verbose_name_plural = "company addresses"
+        verbose_name_plural = _("company addresses")
 
     def __str__(self):
-        return self.company.name
+        return _(self.company.name)

@@ -6,9 +6,9 @@ class AboutCompany(models.Model):
     content = models.TextField(blank=False)
 
     class Meta:
-        verbose_name_plural = 'about company'
+        verbose_name_plural = _('about company')
     def __str__(self):
-        return "About company"
+        return _("About company")
 
     def save(self, *args, **kwargs):
         if not self.content:
