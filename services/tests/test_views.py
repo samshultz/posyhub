@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.test.client import RequestFactory
 from django.urls import reverse
 from django.http import Http404
-from services.views import ServiceDetailView
+from services.views import ServiceDetailView, ServiceListView
 from services.models import Service
 
 
@@ -53,3 +53,15 @@ class ServiceDetailTests(TestCase):
         resp = self.create_request(service)
 
         self.assertEqual(resp.template_name[0], "services/service_detail.html")
+
+
+class ServiceListViewTest(TestCase):
+
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_correct_template_was_used(self):
+        req = self.factory.get(reverse("services:services_list"))
+        resp = ServiceListView.as_view()(req)
+
+        self.assertEqual(resp.template_name[0], "services/service_list.html")
