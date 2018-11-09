@@ -8,7 +8,7 @@ class AboutCompany(models.Model):
     class Meta:
         verbose_name_plural = _('about company')
     def __str__(self):
-        return _("About company")
+        return "About company"
 
     def save(self, *args, **kwargs):
         if not self.content:

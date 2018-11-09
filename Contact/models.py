@@ -17,7 +17,7 @@ class CompanyDetail(models.Model):
 
 
     def __str__(self):
-        return _(self.name)
+        return self.name
 
     def save(self, *args, **kwargs):
         self.clean()
@@ -52,4 +52,4 @@ class CompanyAddress(models.Model):
         verbose_name_plural = _("company addresses")
 
     def __str__(self):
-        return _(self.company.name)
+        return self.company.name

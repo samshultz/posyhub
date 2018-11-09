@@ -2,6 +2,7 @@ from unittest.mock import patch, MagicMock
 from django.test import TestCase
 from django.core.exceptions import ValidationError
 
+
 from about.models import AboutCompany
 
 
