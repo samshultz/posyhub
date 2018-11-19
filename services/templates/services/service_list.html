@@ -1,0 +1,100 @@
+{% extends "__base.html" %}
+
+{% block title %}
+    Our services - {{ block.super }}
+{% endblock title %}
+
+{% block banner %}  
+  {% include "posyhub/_banner.html" with page_title="Services Page" %}
+{% endblock banner %}
+
+{% block content %}
+  <!-- management services -->
+  <section class="services py-5">
+    <div class="container py-md-3">
+      <h3 class="heading mb-lg-5 mb-4">Management services</h3>
+      <div class="row service_grids">
+        <div class="col-lg-4 w3-agile-grid">
+          <div class="grid agile-info">
+            <h4 class="mb-3">Management Services</h4>
+            <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
+            curs in nisl. Duis aliquet varius sem sit amet.</p>
+            <a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
+          </div>
+          <div class="grid mt-4 agile-info">
+            <h4 class="mb-3">Capital Core Services</h4>
+            <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
+            curs in nisl. Duis aliquet varius sem sit amet.</p>
+            <a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 my-lg-0 my-5">
+          <img src="images/service.jpg" alt="" class="img-fluid" /> 
+        </div>
+        <div class="col-lg-4 w3-agile-grid">
+          <div class="grid agile-info">
+            <h4 class="mb-3">Management Services</h4>
+            <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
+            curs in nisl. Duis aliquet varius sem sit amet.</p>
+            <a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
+          </div>
+          <div class="grid mt-4 agile-info">
+            <h4 class="mb-3">Capital Core Services</h4>
+            <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
+            curs in nisl. Duis aliquet varius sem sit amet.</p>
+            <a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //management services -->
+
+  <!-- our features -->
+  <section class="services py-5">
+    <div class="container py-md-3">
+      <h3 class="heading mb-lg-5 mb-4">Our Features</h3>
+      <div class="row service-grids">
+        <div class="col-lg-5 row service-grid1 w3-agile-grid text-right">
+          <div class="col-sm-10 col-10 agile-info">
+            <h4 class="mb-3">24 Hour <span>Support</span></h4>
+            <p class="mb-5">Morbi tempus rhoncus finibus. lorem init Pellentesque tempor, diam ut cursus in sollicitudin, urna imperdiet arcu, id. </p>
+          </div>
+          <div class="col-sm-2 col-2 icon1">
+            <span class="far fa-life-ring"></span>
+          </div>
+          <div class="col-sm-10 col-10 agile-info">
+            <h4 class="mb-3">Full <span>Security</span></h4>
+            <p>Morbi tempus rhoncus finibus. lorem init Pellentesque tempor, diam ut cursus in sollicitudin, urna imperdiet arcu, id. </p>
+          </div>
+          <div class="col-sm-2 col-2 icon2">
+            <span class="fas fa-lock"></span>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 my-lg-0 text-center middle my-md-5 my-4 service-grid1 p-0">
+          <span class="fab fa-asymmetrik"></span>
+        </div>
+        
+        <div class="col-lg-5 row service-grid1 w3-agile-grid">
+          <div class="col-sm-2 col-2 icon3">
+            <span class="fas fa-cogs"></span>
+          </div>
+          <div class="col-sm-10 col-10 agile-info">
+            <h4 class="mb-3">Creative <span>Process</span></h4>
+            <p class="mb-5">Morbi tempus rhoncus finibus. lorem init Pellentesque tempor, diam ut cursus in sollicitudin, urna imperdiet arcu, id. </p>
+          </div>
+          <div class="col-sm-2 col-2 icon4">
+            <span class="fab fa-accusoft"></span>
+          </div>
+          <div class="col-sm-10 col-10 agile-info">
+            <h4 class="mb-3">Quality <span>Performance</span></h4>
+            <p>Morbi tempus rhoncus finibus. lorem init Pellentesque tempor, diam ut cursus in sollicitudin, urna imperdiet arcu, id. </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- //our features -->
+{% endblock content %}

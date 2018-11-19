@@ -1,0 +1,52 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+  {% block meta_tags %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <script type="application/x-javascript">
+      addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+  {% endblock meta_tags %}
+
+  <title>{% block title %}{% trans 'Posyhub' %}{% endblock title %}</title>
+  {% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'about/css/bootstrap.css' %}"> <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="{% static 'about/css/style.css' %}" type="text/css" media="all" /> <!-- Style-CSS --> 
+    <link rel="stylesheet" href="{% static 'about/css/fontawesome-all.css' %}"> <!-- Font-Awesome-Icons-CSS -->
+    <link rel="stylesheet" href="{% static 'about/css/flexslider.css' %}" type="text/css" media="all" />
+    <!-- //css files -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+  <!--//web font-->
+  {% endblock stylesheets %}
+  {% block extra_head %}{% endblock extra_head %}
+</head>
+<body>
+  <header>
+    <div class="container">
+      {% include "posyhub/_navigation.html" %}
+    </div>
+  </header>
+
+  {% block banner %}{% endblock banner %}
+  {% block content %}{% endblock content %}
+
+  <footer>
+    {% include "posyhub/_footer.html" %}
+  </footer>
+  
+  {% block modal %}
+      
+  {% endblock modal %}
+  {% block javascript %}
+      {% include "posyhub/_js.html" %}
+  {% endblock javascript %}
+</body>
+</html>

@@ -4,6 +4,7 @@ from .models import Service
 
 class ServiceListView(ListView):
     model = Service
+    template_name="services/service_list.html"
 
 
 class ServiceDetailView(DetailView):
