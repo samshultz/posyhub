@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'zinnia_ckeditor',
+    'addendum',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'posyhubcomng.context_processors.active_menu',
             ],
         },
     },
@@ -179,5 +182,22 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'full',
         'skin': 'moono',
         'extraPlugins': 'toc',
+    },
+
+    'basic': {
+        'skin': 'moono',
+        'toolbar': 'Custom',
+        'toolbar_Basic': [
+            ['Source', '-', 'Bold', 'Italic']
+        ],
+        'toolbar_Custom': [
+            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-']},
+            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+            {'name': 'insert', 'items': ['Image']}, 
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+        ]
     }
 }

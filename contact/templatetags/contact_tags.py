@@ -5,7 +5,7 @@ register = template.Library()
 
 @register.simple_tag(name="get_company_detail")
 def get_company_detail():
-    return CompanyDetail.objects.first()
+    return CompanyDetail.objects.first() #NOQA
 
 @register.simple_tag(name="get_company_addresses")
 def company_address():

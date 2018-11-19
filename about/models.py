@@ -1,9 +1,10 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.translation import ugettext_lazy as _
 
 class AboutCompany(models.Model):
-    content = models.TextField(blank=False)
+    content = RichTextUploadingField(blank=True, config_name="basic")
 
     class Meta:
         verbose_name_plural = _('about company')

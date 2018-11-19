@@ -1,14 +1,18 @@
 {% extends "__base.html" %}
 
+{% load contact_tags %}
+{% load widget_tweaks %}
+
 {% block title %}
     Contact Us - {{ block.super }}
 {% endblock title %}
 
 {% block banner %}
-    {% include "posyhub/_banner.html" with page_title="Contact Page" %}
+    {% include "posyhub/_banner.html" %}
 {% endblock banner %}
 
 {% block content %}
+  {% get_company_detail as detail %}
     <section class="contact py-5">
       <div class="container">
         <h2 class="heading mb-lg-5 mb-4">Contact Us</h2>
@@ -19,7 +23,7 @@
             </div>
             <div class="col-9 p-0">
               <h4>Email</h4>
-              <p><a href="mailto:info@example.com">info@example.com</a></p>
+              <p><a href="mailto:{{ detail.get_emails.0 }}">{{ detail.get_emails.0 }}</a></p>
             </div>
           </div>
           <div class="row col-md-4 col-sm-6 mt-sm-0 mt-4 contact-grid1 w3-agile-grid">
@@ -28,35 +32,35 @@
             </div>
             <div class="col-9 p-0">
               <h4>Call Us</h4>
-              <p>+11 887 8976 2334</p>
+              <p>{{ detail.get_phone_numbers.0 }}</p>
             </div>
           </div>
           <div class="row col-md-4 col-sm-6 mt-md-0 mt-4 contact-grid1 w3-agile-grid">
             <div class="col-3 text-center">
-              <i class="fas fa-laptop"></i>
+              <i class="fas fa-map-marker"></i>
             </div>
             <div class="col-9 p-0">
-              <h4>Career</h4>
-              <p><a href="mailto:example@career.com">example@career.com</a></p>
+              <h4>Address</h4>
+              <p>{{ detail.get_addresses.0 }}</p>
             </div>
           </div>
         </div>
         <div class="row contact_full w3-agile-grid">
           <div class="col-md-7 contact-us w3-agile-grid">
-            <form action="#" method="post">
+            <form action="" method="post">
               <div class="row">
                 <div class="col-md-6 styled-input">
-                  <input type="text" name="Name" placeholder="Name" required="">
+                  {% render_field form.name placeholder=form.name.label required="" %}
                 </div>
                 <div class="col-md-6 styled-input">
-                  <input type="email" name="Email" placeholder="Email" required=""> 
+                  {% render_field form.email placeholder=form.email.label %}
                 </div> 
               </div>
               <div class="styled-input">
-                <input type="text" name="phone" placeholder="Phone Number" required="">
+                {% render_field form.phone_no placeholder=form.phone_no.label required="" %}
               </div>
               <div class="styled-input">
-                <textarea name="Message" placeholder="Message" required=""></textarea>
+                {% render_field form.message placeholder=form.message.label required="" %}
               </div>
               <div class="click mt-3">
                 <input type="submit" value="SEND">

@@ -9,3 +9,4 @@ class ServiceListView(ListView):
 
 class ServiceDetailView(DetailView):
     model = Service
+    template_name="services/service_detail.html"

@@ -1,49 +1,42 @@
 {% extends "__base.html" %}
 
+{% load services_tags %}
+
 {% block title %}
     Our services - {{ block.super }}
 {% endblock title %}
 
 {% block banner %}  
-  {% include "posyhub/_banner.html" with page_title="Services Page" %}
+  {% include "posyhub/_banner.html" %}
 {% endblock banner %}
 
 {% block content %}
   <!-- management services -->
   <section class="services py-5">
     <div class="container py-md-3">
-      <h3 class="heading mb-lg-5 mb-4">Management services</h3>
+      <h3 class="heading mb-lg-5 mb-4 text-center">Our Services</h3>
       <div class="row service_grids">
         <div class="col-lg-4 w3-agile-grid">
-          <div class="grid agile-info">
-            <h4 class="mb-3">Management Services</h4>
-            <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
-            curs in nisl. Duis aliquet varius sem sit amet.</p>
-            <a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
-          </div>
-          <div class="grid mt-4 agile-info">
-            <h4 class="mb-3">Capital Core Services</h4>
-            <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
-            curs in nisl. Duis aliquet varius sem sit amet.</p>
-            <a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
-          </div>
+          {% get_services as services %}
+          {% for service in services|slice:":3" %}
+            <div class="grid agile-info {% cycle '' 'mt-4' %}">
+              {% include "services/_service.html" with service=service %}
+            </div>
+          {% endfor %}
         </div>
         <div class="col-lg-4 col-md-6 my-lg-0 my-5">
-          <img src="images/service.jpg" alt="" class="img-fluid" /> 
+          {% for service in services|slice:"3:6" %}
+            <div class="grid agile-info {% cycle '' 'mt-4' %}">
+              {% include "services/_service.html" with service=service %}
+            </div>
+          {% endfor %}
         </div>
         <div class="col-lg-4 w3-agile-grid">
-          <div class="grid agile-info">
-            <h4 class="mb-3">Management Services</h4>
-            <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
-            curs in nisl. Duis aliquet varius sem sit amet.</p>
-            <a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
-          </div>
-          <div class="grid mt-4 agile-info">
-            <h4 class="mb-3">Capital Core Services</h4>
-            <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
-            curs in nisl. Duis aliquet varius sem sit amet.</p>
-            <a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
-          </div>
+          {% for service in services|slice:"6:9" %}
+            <div class="grid agile-info {% cycle '' 'mt-4' %}">
+              {% include "services/_service.html" with service=service %}
+            </div>
+          {% endfor %}
         </div>
       </div>
     </div>

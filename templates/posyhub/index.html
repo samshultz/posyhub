@@ -1,6 +1,7 @@
 {% extends "../__base.html" %}
 
-{% load static %}
+{% load static about_tags addendum_tags services_tags %}
+{% load i18n %}
 {% block banner %}
     {% include "./_home_banner.html" %}
 {% endblock banner %}
@@ -9,23 +10,24 @@
   <!-- about -->
   <section class="about py-5">
     <div class="container py-md-3">
-      <h3 class="heading mb-md-5 mb-4">About Us</h3>
+      <h3 class="heading mb-md-5 mb-4">{% trans "About Us" %} </h3>
       <div class="row about-grids agile-info">
         <div class="col-lg-6 mb-lg-0 w3-agile-grid mb-5">
-          <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
-          curs in nisl. Duis aliquet varius sem sit amet convallis nun ca dictum.</p>
-          <p class="mt-2 mb-3">Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
-          curs in nisl. Duis aliquet varius sem sit amet. convallis nun ca dictum amet. Quisquen ac ipsum porta, ultrices metus sit amet,
-            curs in nisl. Duis aliquet varius sem sit amet.</p>
-          <a href="about.html">Read More </a>
+          <p>
+            {% get_company_description as description %} 
+            
+              {{ description|truncatewords:"50" }}
+            
+          </p>
+          <a href="{% url 'about:about-us' %}">{% trans "Read More" %}  </a>
         </div>
         <div class="col-lg-3 col-md-4 w3-agile-grid pr-md-0">
-          <h3 class="margin">15+ years experience</h3>
-          <h3 class="black">Valuable Services</h3>
+          <h3 class="margin">{% snippet 'service1' %}15+ years experience{% endsnippet %}</h3>
+          <h3 class="black">{% snippet 'service2' %}Valuable Services{% endsnippet %}</h3>
         </div>
         <div class="col-lg-3 col-md-4 w3-agile-grid mt-md-0 mt-4">
-          <h3 class="margin green">Experienced Professionals</h3>
-          <h3 class="grey">Management Solutions</h3>
+          <h3 class="margin green">{% snippet 'service3' %}Experienced Professionals{% endsnippet %}</h3>
+          <h3 class="grey">{% snippet 'service4' %}Management Solutions{% endsnippet %}</h3>
         </div>
       </div>
     </div>
@@ -74,40 +76,28 @@
   <!-- //how we work -->
 
   <!-- management services -->
+  {% get_services 4 as services %}
   <section class="services py-5">
     <div class="container agile-info py-md-3">
-      <h3 class="heading mb-lg-5 mb-4">Management services</h3>
+      <h3 class="heading mb-lg-5 mb-4">Services</h3>
       <div class="row service_grids">
         <div class="col-lg-4 w3-agile-grid">
-          <div class="grid">
-            <h4 class="mb-3">Management Services</h4>
-            <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
-            curs in nisl. Duis aliquet varius sem sit amet.</p>
-            <a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
-          </div>
-          <div class="grid mt-4">
-            <h4 class="mb-3">Capital Core Services</h4>
-            <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
-            curs in nisl. Duis aliquet varius sem sit amet.</p>
-            <a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
-          </div>
+          {% for service in services|slice:":2" %}
+            <div class="grid {% cycle '' 'mt-4'">
+              {% include 'services/_service.html' with service=service%}
+            </div>
+          {% endfor %}  
+          
         </div>
         <div class="col-lg-4 col-md-6 my-lg-0 my-5">
           <img src="{% static 'about/images/service.jpg' %}" alt="" class="img-fluid" /> 
         </div>
         <div class="col-lg-4 w3-agile-grid">
-          <div class="grid">
-            <h4 class="mb-3">Management Services</h4>
-            <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
-            curs in nisl. Duis aliquet varius sem sit amet.</p>
-            <a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
-          </div>
-          <div class="grid mt-4">
-            <h4 class="mb-3">Capital Core Services</h4>
-            <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
-            curs in nisl. Duis aliquet varius sem sit amet.</p>
-            <a href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
-          </div>
+            {% for service in services|slice:"2:" %}
+              <div class="grid {% cycle '' 'mt-4'">
+                {% include 'services/_service.html' with service=service%}
+              </div>
+            {% endfor %}
         </div>
       </div>
     </div>
@@ -118,11 +108,13 @@
   <section class="quotes py-5 text-center">
     <div class="container py-md-3">
       <div class="quotes-info agile-info-quotes">
-        <h3 class="mb-3">Get started work with us</h3>
-        <p>Cras blandit nibh ut pretium elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum porta, ultrices metus sit amet,
-        curs in nisl. Duis aliquet varius sem sit amet.</p>
-        <a class="bt mt-4 mr-2 text-capitalize" href="#" data-toggle="modal" data-target="#exampleModalCenter" role="button"> read more</a>
-        <a class="bt mt-4 text-capitalize start" href="contact.html" role="button"> Get Started</a>
+        <h3 class="mb-3">Get started: work with us</h3>
+        <p>
+          {% snippet 'home:call_to_action' %}Are you ready to move your business to the next level and increase your customers, sales and profit? 
+          Then contact Us now{% endsnippet %}
+        </p>
+        <a class="bt mt-4 mr-2 text-capitalize" href="{% url 'about:about-us' %}" role="button"> read more</a>
+        <a class="bt mt-4 text-capitalize start" href="{% url 'contact:contact-us' %}" role="button"> Get Started</a>
       </div>
     </div>
   </section>

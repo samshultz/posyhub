@@ -31,7 +31,7 @@ class CompanyDetail(models.Model):
                 validate_email(email)
 
     def get_emails(self):
-        email = '' if not self.email else [email.strip() for email in self.email.split(",")]
+        email = '' if not self.email else [email.strip() for email in self.email.split(",")] # NOQA
         return email
 
     def get_phone_numbers(self):
