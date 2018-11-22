@@ -1,0 +1,79 @@
+{% extends "__base.html" %}
+{% load i18n %}
+{% load zinnia %}
+
+{% block banner %}
+    {% include "posyhub/_banner.html" with page_title="Blog Page" %}
+{% endblock banner %}
+{% block meta-description %}
+    {% spaceless %}
+
+        {% if category %}
+            {% if category.description %}
+                {{ category.description|striptags|safe }}
+            {% else %}
+                {% blocktrans with object=category %}The last entries categorized under {{ object }}{% endblocktrans %}
+            {% endif %}
+        {% endif %}
+
+        {% if tag %}
+            {% blocktrans with object=tag %}The last entries tagged with {{ object }}{% endblocktrans %}
+        {% endif %}
+
+        {% if author %}
+            {% blocktrans with object=author %}The last entries by {{ object }}{% endblocktrans %}
+        {% endif %}
+
+    {% endspaceless %}
+{% endblock meta-description %}
+
+{% block title %}
+    {% spaceless %}
+        {% if category %}
+            {% blocktrans with object=category %}Category {{ object }}{% endblocktrans %}
+        {% endif %}
+
+        {% if tag %}
+            {% blocktrans with object=tag %}Tag {{ object }}{% endblocktrans %}
+        {% endif %}
+
+        {% if author %}
+            {% blocktrans with object=author %}Author {{ object }}{% endblocktrans %}
+        {% endif %}
+
+    {% endspaceless %}
+{% endblock title %}
+
+{% block content %}
+    
+    <section class="blog blog-page">
+        <div class="workd w3-agile py-5">
+            <div class="container py-md-3">
+                {% if category %}
+                    <h2 class="heading mb-lg-5 mb-4 text-center">{% blocktrans %}Category archives: {{ category }}{% endblocktrans %}</h2>
+                    {% if category.description %}
+                        <p>{{ category.description|striptags|safe }}</p>
+                    {% endif %}
+                {% endif %}
+            
+                {% if tag %}
+                    <h2 class="heading mb-lg-5 mb-4 text-center">{% blocktrans %}Tag archives: {{ tag }}{% endblocktrans %}</h2>
+                {% endif %}
+            
+                {% if author %}
+                    <h2 class="heading mb-lg-5 mb-4 text-center">{% blocktrans %}Author archives: {{ author }}{% endblocktrans %}</h2>
+                {% endif %}
+                <h2 class="heading mb-lg-5 mb-4 text-center">Our Blog</h2>
+                <div class="row blog-grids">
+                    {% for object in object_list %}
+                        {% cycle 'blog-grid1 mr-lg-1' 'blog-grid2 ml-lg-1' as layout silent %}   
+                        {% include 'posyhub/_blog_list.html' with post=object loop_count=forloop.counter grid_layout=layout float=fl%}
+                    {% empty %}
+                        <p class="text-center"><strong>{% trans "No entries yet." %}</strong></p>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

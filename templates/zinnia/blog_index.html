@@ -1,0 +1,35 @@
+{% extends "master_temp/__base.html" %}
+
+{% block title %}
+    Blog - {{ block.super }}
+{% endblock title %}
+
+{% block banner %}
+    {% include "master_temp/_banner.html" with page_title="Blog Page" %}
+{% endblock banner %}
+
+{% block content %}
+    <section class="blog blog-page">
+      <div class="workd w3-agile py-5">
+        <div class="container py-md-3">
+          <h2 class="heading mb-lg-5 mb-4">Our Blog</h2>
+          <div class="row blog-grids">
+            <div class="col-lg-6 w3-agile-grid">
+              <div class="row blog-grid1 mr-lg-1">
+                <div class="col-lg-5 col-md-4 col-sm-5 pl-0">
+                  <img src="images/t1.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-7 col-md-8 agile-info col-sm-7 blog-text">
+                  <p class="mt-2">june 15 2018</p>
+                  <h4>Capital Management</h4>
+                  <p>Cras blandit nibh ut pretium amet in elementum. Duis bibendum convallis nun ca dictum. Quisquen ac ipsum</p>
+                  <a href="single.html" class="blog">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}

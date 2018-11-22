@@ -31,8 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'jet.dashboard',
-    'jet',
+    'constance',
+    'constance.backends.database',
+    'suit',
     'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.auth',
@@ -40,10 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # my apps
     'contact',
     'about',
     'services',
     'snippets',
+
+    # third party apps
     'django_comments',
     'mptt',
     'tagging',
@@ -79,6 +84,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'posyhubcomng.context_processors.active_menu',
+                'constance.context_processors.config',
             ],
         },
     },
@@ -201,3 +207,24 @@ CKEDITOR_CONFIGS = {
         ]
     }
 }
+
+# DJANGO CONSTANCE CONFIG
+
+CONSTANCE_ADDITIONAL_FIELDS = {
+    'url_field': ['django.forms.URLField', {}]
+}
+CONSTANCE_CONFIG = {
+    'Facebook': ('', 'The URL to your facebook page', 'url_field'),
+    'Twitter': ('', 'The URL of your twitter page', 'url_field'),
+    'LinkedIn': ('', 'The URL of your LinkedIn page', 'url_field'),
+    'Google+': ('', 'The URL of your Google plus page', 'url_field'),
+    'OPENING_HOURS': ('8AM', 'The time your office opens for work everyday'),
+    'CLOSING_HOURS': ('6PM', 'The time your office closes from work everyday')
+}
+
+CONSTANCE_CONFIG_FIELDSETS = {
+    'Social Media Settings': ('Facebook', 'Twitter', 'LinkedIn', 'Google+'),
+    'Timing': ('OPENING_HOURS', 'CLOSING_HOURS'),
+}
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_IGNORE_ADMIN_VERSION_CHECK = True

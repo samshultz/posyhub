@@ -1,0 +1,29 @@
+{% extends "__base.html" %}
+
+{% block title %}
+    {{ service.name }} - Our Services - {{ block.super }}
+{% endblock title %}
+{% block banner %}
+    {% include "posyhub/_banner.html" %}
+{% endblock banner %}
+
+{% block content %}
+  <!-- about -->
+  <section class="about py-5">
+    <div class="container py-md-3 agile-info">
+      <h2 class="heading mb-md-5 mb-4 text-center">About Us</h2>
+      <div class="row about-grids agile-info">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 w3-agile-grid mb-lg-0 mb-5">
+            
+            {% if service.image %}
+                <img src="{{ service.image.url }}" alt="{{ service.title }}" height="300" width="300">
+            {% endif %}
+                
+          <p>{{ service.description|safe|linebreaks }}</p>          
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //about -->
+{% endblock content %}

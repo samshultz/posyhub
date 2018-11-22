@@ -9,11 +9,15 @@ def get_company_detail():
 
 @register.simple_tag(name="get_company_addresses")
 def company_address():
-    return CompanyDetail.objects.first().get_addresses()
+    detail = CompanyDetail.objects.first()
+    if detail:
+        return detail.get_addresses()
 
 @register.simple_tag(name="get_company_phone_numbers")
 def company_phone_numbers():
-    return CompanyDetail.objects.first().get_phone_numbers()
+    detail = CompanyDetail.objects.first()
+    if detail:
+        return detail.get_phone_numbers()
 
 @register.inclusion_tag("contact/_render_company_detail.html", name="render_company_detail")
 def render_company_detail():

@@ -22,7 +22,7 @@
               {% get_company_phone_numbers as phone_no %}
               {% get_company_detail as detail %}
               <p class="mb-2"><i class="fas fa-map-marker"></i> {{ addresses.0 }}</p>
-              <p><i class="fas mr-1 fa-clock"></i> Timings : 10 a.m to 6 p.m</p>
+              <p><i class="fas mr-1 fa-clock"></i> Timings : {{ config.OPENING_HOURS }} to {{ config.CLOSING_HOURS }}</p>
               <p><i class="fas mr-1 fa-phone"></i> {{ phone_no.0 }}</p>
               <p><i class="fas mr-1 fa-envelope-open"></i> <a href="mailto:{{ detail.get_emails.0 }}">{{ detail.get_emails.0 }}</a></p>
             </address>

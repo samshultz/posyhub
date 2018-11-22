@@ -1,0 +1,13 @@
+<div class="col-lg-6 w3-agile-grid {% if loop_count == 2 %}mt-lg-0{% endif %} {% if loop_count != 1 %}mt-5{% endif %}">
+    <div class="row {{ grid_layout }}">
+        <div class="col-lg-5 col-md-4 col-sm-5 pl-0">
+          <img src="{{ post.image.url }}" class="img-fluid" alt="{{ post.title }}">
+        </div>
+        <div class="col-lg-7 col-md-8 agile-info col-sm-7 blog-text">
+         <p class="mt-2">{{ post.publication_date }}</p>
+          <h4>{{ post.title }}</h4>
+          <p>{{ post.content|truncatewords_html:"50"|safe }}</p>
+          <a href="{{ post.get_absolute_url }}" class="blog">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
+        </div>
+    </div>
+</div>
