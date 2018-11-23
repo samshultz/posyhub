@@ -71,7 +71,9 @@
                     {% empty %}
                         <p class="text-center"><strong>{% trans "No entries yet." %}</strong></p>
                     {% endfor %}
-                    
+                    {% if is_paginated %}
+                        {% zinnia_pagination page_obj %}
+                    {% endif %}
                 </div>
             </div>
         </div>
