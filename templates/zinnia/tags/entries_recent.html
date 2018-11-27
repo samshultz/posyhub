@@ -1,0 +1,14 @@
+<div class="single-gd">
+    <h4>Recent Entries</h4>
+    
+    {% for entry in entries %}
+    
+      <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}">
+        <img src="{{ entry.image.url }}" class="img-fluid" alt="{{ entry.caption|default:entry.title }}">
+      </a>
+      <h4>{{ entry.title }}</h4>
+      <p>{{ entry.lead|truncatewords_html:"20"|safe }}</p>
+      <a href="{{ entry.get_absolute_url }}" class="blog">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
+      <br>
+    {% endfor %}
+  </div>

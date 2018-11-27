@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'suit',
     'django.contrib.admin',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -49,6 +50,10 @@ INSTALLED_APPS = [
     'snippets',
 
     # third party apps
+    'sorl.thumbnail',
+    'fluent_comments',
+    'crispy_forms',
+    'threadedcomments',
     'django_comments',
     'mptt',
     'tagging',
@@ -58,6 +63,7 @@ INSTALLED_APPS = [
     'zinnia_ckeditor',
     'addendum',
     'widget_tweaks',
+    'robots',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +82,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
+        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -85,6 +91,11 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'posyhubcomng.context_processors.active_menu',
                 'constance.context_processors.config',
+            ],
+            'loaders': [
+                'app_namespace.Loader',
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
             ],
         },
     },
@@ -143,39 +154,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-# DJANGO JET SETTINGS
-JET_THEMES = [
-    {
-        'theme': 'default', # theme folder name
-        'color': '#47bac1', # color of the theme's button in user menu
-        'title': 'Default' # theme title
-    },
-    {
-        'theme': 'green',
-        'color': '#44b78b',
-        'title': 'Green'
-    },
-    {
-        'theme': 'light-green',
-        'color': '#2faa60',
-        'title': 'Light Green'
-    },
-    {
-        'theme': 'light-violet',
-        'color': '#a464c4',
-        'title': 'Light Violet'
-    },
-    {
-        'theme': 'light-blue',
-        'color': '#5EADDE',
-        'title': 'Light Blue'
-    },
-    {
-        'theme': 'light-gray',
-        'color': '#222',
-        'title': 'Light Gray'
-    }
-]
 
 SITE_ID = 1
 
@@ -229,3 +207,10 @@ CONSTANCE_CONFIG_FIELDSETS = {
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 CONSTANCE_IGNORE_ADMIN_VERSION_CHECK = True
 ZINNIA_PAGINATION = 3
+
+# COMMENTS XTD SETTINGS
+COMMENTS_APP = 'fluent_comments'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# DJANGO ROBOTS SETTINGS
+ROBOTS_USE_SCHEME_IN_HOST = True

@@ -1,0 +1,38 @@
+{% load comments i18n widget_tweaks %}
+<form action="{% comment_form_target %}" method="post" id="comment-form">
+  <div>{% csrf_token %}</div>
+  {% if form.non_field_errors %}
+  <div class="error">
+    {{ form.non_field_errors }}
+  </div>
+  {% endif %}
+  <fieldset>
+    <a id="cancel-comment-reply" href="#comment-form" style="display:none;">{% trans "Cancel reply" %}</a>
+    <legend>{% trans "Leave a Comment" %}</legend>
+    <input type="hidden" name="next" value="{% url 'zinnia:comment_success' %}"/>
+    {% for field in form %}
+    {% if field.is_hidden %}{{ field }}{% else %}
+    {% if user.email and field.name in "namemailurl" %}{% else %}
+    <div{% if field.errors %} class="error"{% endif %}{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+      {{ field.label_tag }}
+      {% if field.errors %}{{ field.errors }}{% endif %}
+      {% if field.name == 'url' %}
+        {% render_field field type="text" placeholder=field.label %}
+      {% else %}
+        {% render_field field placeholder=field.label %}
+      {% endif %}
+      
+    </div>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% if user.is_authenticated %}
+    <p class="auth">
+      {% trans "Comment as" %} <strong>{% firstof user.get_full_name user.get_username %}</strong>. <a href="{% url 'admin:logout' %}">{% trans "Log out" %}</a>.
+    </p>
+    {% endif %}
+    
+      <input type="submit" name="submit" class="submit-post form-control" value="{% trans "Post Comment" %}" />
+   
+  </fieldset>
+</form>

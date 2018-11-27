@@ -1,3 +1,4 @@
+{% load zinnia %}
 {% load about_tags services_tags contact_tags addendum_tags %}
 
 <div class="container-fluid p-5">
@@ -5,7 +6,7 @@
       <div class="col-lg-5 mb-lg-0 mb-4">
         {% get_company_description as description %}
         <h3 class="text-capitalize mb-3">About Company</h3>
-        <p>{{ description|truncatewords:"30" }} </p>
+        <p>{{ description|truncatewords:"30"|safe }} </p>
         <div class="row mt-4">
           <div class="col-md-6">
             <h3 class="text-capitalize mb-3">Connect With Us</h3>
@@ -50,54 +51,8 @@
       </div>
       <div class="col-lg-4 col-md-6 mt-lg-0 mt-md-0 mt-4 p-md-0">
         <h3 class="text-capitalize mb-3">Latest Posts</h3>
-        <div class="blog-grids row mb-3">
-          <div class="col-md-4 col-sm-3 col-4 pr-sm-3 pr-0 blog-grid-left">
-            <a href="single.html">
-              <img src="images/f1.jpg" class="img-fluid" alt="">
-            </a>
-          </div>
-          <div class="col-md-8 col-sm-9 col-8 blog-grid-right">
-            <h5>
-              <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis convallis nunc </a>
-            </h5>
-            <div class="sub-meta">
-              <span>
-                <i class="far fa-clock"></i> 12 June, 2018</span>
-            </div>
-          </div>
-        </div>
-        <div class="blog-grids row mb-3">
-          <div class="col-md-4 col-sm-3 col-4 pr-sm-3 pr-0 blog-grid-left">
-            <a href="single.html">
-              <img src="images/f2.jpg" class="img-fluid" alt="">
-            </a>
-          </div>
-          <div class="col-md-8 col-sm-9 col-8 blog-grid-right">
-            <h5>
-              <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis convallis nunc </a>
-            </h5>
-            <div class="sub-meta">
-              <span>
-                <i class="far fa-clock"></i> 12 June, 2018</span>
-            </div>
-          </div>
-        </div>
-        <div class="blog-grids row">
-          <div class="col-md-4 col-sm-3 col-4 pr-sm-3 pr-0 blog-grid-left">
-            <a href="single.html">
-              <img src="images/f3.jpg" class="img-fluid" alt="">
-            </a>
-          </div>
-          <div class="col-md-8 col-sm-9 col-8 blog-grid-right">
-            <h5>
-              <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis convallis nunc </a>
-            </h5>
-            <div class="sub-meta">
-              <span>
-                <i class="far fa-clock"></i> 13 June, 2018</span>
-            </div>
-          </div>
-        </div>
+        
+        {% get_recent_entries 3 "posyhub/_footer_recent_entries.html" %}
       </div>
     </div>
   </div>

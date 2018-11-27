@@ -1,0 +1,22 @@
+
+{% for entry in entries %}
+  <div class="blog-grids row mb-3">
+    {% if entry.image %}
+      <div class="col-md-4 col-sm-3 col-4 pr-sm-3 pr-0 blog-grid-left">
+          <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">
+            <img src="{{ entry.image.url }}" class="img-fluid mb-0" alt="{{ entry.title }}">
+          </a>
+      </div>
+    {% endif %}
+      
+      <div class="col-md-8 col-sm-9 col-8 blog-grid-right">
+        <h5>
+            <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}</a>
+        </h5>
+        <div class="sub-meta">
+          <span>
+            <i class="far fa-clock"></i> {{ entry.publication_date }}</span>
+        </div>
+      </div>
+  </div>
+{% endfor %}

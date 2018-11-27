@@ -15,6 +15,8 @@
       }
     </script>
     <meta name="description" content="{% block meta-description %}{% endblock meta-description %}" />
+    <script type="text/javascript" src="{% static 'about/js/jquery-2.1.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'fluent_comments/js/ajaxcomments.js' %}"></script>
   {% endblock meta_tags %}
 
   <title>{% block title %}{% trans 'Posyhub' %}{% endblock title %}</title>
@@ -49,5 +51,10 @@
   {% block javascript %}
       {% include "posyhub/_js.html" %}
   {% endblock javascript %}
+  
+  {% block extra_js %}
+    
+  {% endblock extra_js %}
+    
 </body>
 </html>

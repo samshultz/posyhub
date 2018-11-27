@@ -1,0 +1,61 @@
+{% extends "__base.html" %}
+{% load i18n %}
+{% load zinnia %}
+
+{% block title %}{% trans "Sitemap" %}{% endblock title %}
+
+{% block meta-description %}{% trans "Sitemap of the posyhub blog" %}{% endblock meta-description %}
+
+{% block banner %}
+  {% include "posyhub/_banner.html" %}
+{% endblock banner %}
+{% block content %}
+
+<section class="banner-bottom-w3ls-agileinfo py-5">
+  <!--/blog-->
+  <div class="container py-md-3">
+    <div class="row inner-sec-wthree-agileits">
+      <div class="col-lg-8 blog-sp">
+        <article class="blog-x row">
+
+          <div class="">
+          
+            <h2>{% trans "Entries per categories" %}</h2>
+            {% for category in categories %}
+            <br>
+            <h4>{{ category }}</h4>
+            <ul>
+              {% for entry in category.entries_published.all %}
+              <li>
+                <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}</a>
+                {% with comment_count=entry.comment_count %}
+                {% if comment_count %}
+                - {{ comment_count }} {% trans "comment" %}{{ comment_count|pluralize }}
+                {% endif %}
+                {% endwith %}
+              </li>
+              {% empty %}
+              <li>
+                {% trans "No entries yet." %}
+              </li>
+              {% endfor %}
+            </ul>
+            {% endfor %}
+            <br>
+            <div class="montharchives">
+            <h2>{% trans "Monthly archives" %}</h2>
+            {% get_archives_entries %}
+          </div>  
+          </div>
+          <div class="clearfix"></div>
+         
+        </article>
+        
+      </div>
+      {% include "posyhub/_entry_detail_sidebar.html" %}
+
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

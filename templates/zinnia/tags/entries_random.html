@@ -1,0 +1,25 @@
+<div class="single-gd tech-btm">
+  <h4>Random Entries </h4>
+  
+  {% for entry in entries %}
+    <div class="blog-grids">
+      {% if entry.image %}
+        <div class="blog-grid-left">
+          <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">
+            <img src="{{ entry.image.url }}" class="img-fluid mb-0" alt="{{ entry.title }}">
+          </a>
+        </div>
+      {% endif %}
+      <div class="blog-grid-right">
+
+        <h5>
+          <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}</a>
+        </h5>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+  {% empty %}
+    <p><strong>No entries Yet</strong></p>
+  {% endfor %}
+
+</div>
