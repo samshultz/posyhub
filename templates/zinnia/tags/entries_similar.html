@@ -1,25 +1,25 @@
-<div class="single-gd tech-btm">
-    <h4>Similar Entries </h4>
-    
+{% load thumbnail %}
+
     {% for entry in entries %}
+
       <div class="blog-grids">
         {% if entry.image %}
-          <div class="blog-grid-left">
-            <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">
-              <img src="{{ entry.image.url }}" class="img-fluid mb-0" alt="{{ entry.title }}">
-            </a>
-          </div>
+          {% thumbnail entry.image "101x105" crop="center" as im %}
+            <div class="blog-grid-left">
+              <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">
+                <img src="{{ im.url }}" class="img-responsive" alt="{{ entry.title }}" width="{{ im.width }}" height="{{ im.height }}">
+              </a>
+            </div>
+          {% endthumbnail %}
         {% endif %}
-        <div class="blog-grid-right">
-
-          <h5>
-            <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}</a>
-          </h5>
+          
+          <div class="blog-grid-right">
+            <h5>
+              <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}</a>
+            </h5>
+          </div>
+          <div class="clearfix"> </div>
         </div>
-        <div class="clearfix"> </div>
-      </div>
     {% empty %}
       <p><strong>No entries yet.</strong></p>
     {% endfor %}
-
-  </div>

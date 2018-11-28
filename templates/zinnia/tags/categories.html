@@ -1,16 +1,16 @@
 {% load i18n %}
 
   <div class="single-gd">
-      <h4>Categories</h4>
+
       {% for category in categories %}
         
       
         <div>
-          <h5>
+          <p>
               <a href="{{ category.get_absolute_url }}"
               title="{% blocktrans %}Show all entries in {{ category }}{% endblocktrans %}">{{ category }}</a>
-          <small>{% blocktrans count entry_count=category.count_entries_published %}{{ entry_count }} entry{% plural %}{{ entry_count }} entries{% endblocktrans %}</small>
-          </h5>
+          <span class="badge badge-info">{% blocktrans count entry_count=category.count_entries_published %}{{ entry_count }} entry{% plural %}{{ entry_count }} entries{% endblocktrans %}</span>
+          </p>
         </div>
       {% empty %}
         <p><strong>No categories yet.</strong></p>

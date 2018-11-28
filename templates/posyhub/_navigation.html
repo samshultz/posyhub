@@ -1,55 +1,55 @@
-{% load addendum_tags %}
-<nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="{% url 'home' %}">
-        <span class="fab fa-asymmetrik"></span> Grade
-      </a>
-      <button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+{% load addendum_tags static %}
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <a class="navbar-brand" href="{% url 'home' %}">
+    <i class="fab fa-digital-ocean"></i> posyhub</a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto tp-nav text-center">
+      <li class="nav-item {% if active == 'home' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'home' %}">Home
+            {% if active == 'home' %}
+              <span class="sr-only">(current)</span>
+            {% endif %}
+          </a>
+        </li>
+        <li class="nav-item {% if active == 'about' %}active{% endif %}">
+          <a class="nav-link" href="{% url 'about:about-us' %}">About
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto text-center">
-          <li class="nav-item {% if active == 'home' %}active{% endif %}  mr-lg-3">
-            <a class="nav-link" href="{% url 'home' %}">Home
-                {% if active == 'home' %}
-                  <span class="sr-only">(current)</span>
-                {% endif %}
+            {% if active == 'about' %}
+              <span class="sr-only">(current)</span>
+              {% endif %}
             </a>
           </li>
-          <li class="nav-item  mr-lg-3 {% if active == 'about' %}active{% endif %}">
-            <a class="nav-link" href="{% url 'about:about-us' %}">about
-                {% if active == 'about' %}
-                  <span class="sr-only">(current)</span>
-                {% endif %} 
-            </a>
-          </li>
-          <li class="nav-item  mr-lg-3 {% if active == 'services' %}active{% endif %}">
-            <a class="nav-link" href="{% url 'services:services_list' %}">Services
-                {% if active == 'services' %}
-                  <span class="sr-only">(current)</span>
-                {% endif %} 
-            </a>
-          </li>
-          <li class="nav-item  mr-lg-3 {% if active == 'blog' %}active{% endif %}">
+          <li class="nav-item {% if active == 'blog' %}active{% endif %}">
             <a class="nav-link" href="/blog">Blog
               {% if active == 'blog' %}
-                  <span class="sr-only">(current)</span>
-              {% endif %} 
-            </a>
-          </li>
-          
-          <li class="nav-item {% if active == 'contact' %}active{% endif %}">
-            <a class="nav-link" href="{% url 'contact:contact-us' %}">contact
-              {% if active == 'contact' %}
                 <span class="sr-only">(current)</span>
-              {% endif %} 
-            </a>
-          </li>
-        </ul>
-        <div class="buttons">
-          <p><i class="fas mr-1 fa-phone"></i> {% snippet 'phone_number' %}+2348163143403{% endsnippet %}</p>
-        </div>
-        
-      </div>
-    </nav>
+                {% endif %}
+              </a>
+            </li>
+            
+      <li class="nav-item {% if active == 'services' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'services:services_list' %}">Services
+          {% if active == 'services' %}
+            <span class="sr-only">(current)</span>
+          {% endif %}
+        </a>
+      </li>
+      <li class="nav-item {% if active == 'contact' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'contact:contact-us' %}">Contact
+          {% if menu == 'contact' %}
+            <span class="sr-only">(current)</span>
+          {% endif %}
+        </a>
+      </li>
+    </ul>
+    <form action="#" method="post" class="form-inline my-2 my-lg-0 search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search here..." name="Search" required="">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+  </div>
+</nav>

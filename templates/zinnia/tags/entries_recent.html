@@ -1,14 +1,25 @@
-<div class="single-gd">
-    <h4>Recent Entries</h4>
-    
+{% load thumbnail %}
+
     {% for entry in entries %}
-    
-      <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}">
-        <img src="{{ entry.image.url }}" class="img-fluid" alt="{{ entry.caption|default:entry.title }}">
-      </a>
-      <h4>{{ entry.title }}</h4>
-      <p>{{ entry.lead|truncatewords_html:"20"|safe }}</p>
-      <a href="{{ entry.get_absolute_url }}" class="blog">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
-      <br>
+
+      <div class="blog-grids">
+        {% if entry.image %}
+          {% thumbnail entry.image "101x105" crop="center" as im %}
+            <div class="blog-grid-left">
+              <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">
+                <img src="{{ im.url }}" class="img-responsive" alt="{{ entry.title }}" width="{{ im.width }}" height="{{ im.height }}">
+              </a>
+            </div>
+          {% endthumbnail %}
+        {% endif %}
+          
+          <div class="blog-grid-right">
+            <h5>
+              <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}</a>
+            </h5>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+    {% empty %}
+      <p><strong>No entries yet.</strong></p>
     {% endfor %}
-  </div>

@@ -1,61 +1,53 @@
-{% load zinnia %}
+{% load zinnia static %}
 {% load about_tags services_tags contact_tags addendum_tags %}
 
-<div class="container-fluid p-5">
-    <div class="row footer-gap">
-      <div class="col-lg-5 mb-lg-0 mb-4">
-        {% get_company_description as description %}
-        <h3 class="text-capitalize mb-3">About Company</h3>
-        <p>{{ description|truncatewords:"30"|safe }} </p>
-        <div class="row mt-4">
-          <div class="col-md-6">
-            <h3 class="text-capitalize mb-3">Connect With Us</h3>
-            <p><span class="fab fa-twitter"></span> twitter/@my_website</p>
-            <p><span class="fab fa-instagram"></span> instagram/@my_website</p>
-            <p><span class="fab fa-youtube mb-4"></span> youtube/@my_website</p>
-            <a href="#" class="facebook mr-2"><span class="fab mr-1 fa-facebook-f"></span> Facebook</a>
-            <a href="#" class="twitter"><span class="fab mr-1 fa-twitter"></span> Twitter</a>
-          </div>
-          <div class="col-md-6 mt-md-0 mt-5">
-            <h3 class="text-capitalize mb-3">Head Quarters</h3>
-            <address class="mb-0">
-              {% get_company_addresses as addresses %}
-              {% get_company_phone_numbers as phone_no %}
-              {% get_company_detail as detail %}
-              <p class="mb-2"><i class="fas fa-map-marker"></i> {{ addresses.0 }}</p>
-              <p><i class="fas mr-1 fa-clock"></i> Timings : {{ config.OPENING_HOURS }} to {{ config.CLOSING_HOURS }}</p>
-              <p><i class="fas mr-1 fa-phone"></i> {{ phone_no.0 }}</p>
-              <p><i class="fas mr-1 fa-envelope-open"></i> <a href="mailto:{{ detail.get_emails.0 }}">{{ detail.get_emails.0 }}</a></p>
-            </address>
-          </div>
-        </div>
+<div class="container">
+  <div class="row footer-top-w3layouts-agile">
+    <div class="col-lg-3 footer-grid" data-aos="zoom-in">
+      <div class="footer-title">
+        <h2>About Us</h2>
       </div>
-      <div class="col-lg-3 col-md-6 mt-lg-0 mt-sm-0 p-md-0">
-        <h3 class="text-capitalize mb-3">Services</h3>
-        {% get_services 4 as services %}
-        <ul>
-          
-          {% for service in services %}
-            <li><i class="fas mr-1 fa-chevron-circle-right"></i> {{ service.name }}</li>
-          {% endfor %}
-            
-          
-        </ul>
-        <h3 class="text-capitalize mt-4 mb-3">Newsletter</h3>
-        <p class="mb-3">Subscribe to Our Newsletter to get News, Amazing Offers &amp; More</p>
-        <form action="#" method="post">
-          <input type="email" name="Email" placeholder="Enter your email..." required="">
-          <button class="btn1"><i class="far fa-paper-plane"></i></button>
-          <div class="clearfix"> </div>
-        </form>
-      </div>
-      <div class="col-lg-4 col-md-6 mt-lg-0 mt-md-0 mt-4 p-md-0">
-        <h3 class="text-capitalize mb-3">Latest Posts</h3>
-        
-        {% get_recent_entries 3 "posyhub/_footer_recent_entries.html" %}
+      {% get_company_description as about_company %}
+      <div class="footer-text">
+        {{ about_company|truncatewords_html:"20"|safe }}
       </div>
     </div>
+    <div class="col-lg-3 footer-grid" data-aos="zoom-in">
+      <div class="footer-title">
+        <h3>Contact Us</h3>
+      </div>
+      {% get_company_detail as comp %}
+      <div class="footer-office-hour">
+        <ul>
+          <li class="hd">Address :</li>
+          <li>{{ comp.get_addresses.0 }}</li>
+
+        </ul>
+        <ul>
+          <li class="hd">Phone:{{ comp.get_phone_numbers.0 }}</li>
+          <li class="hd">Email:
+            <a href="mailto:{{ comp.get_emails.0 }}">{{ comp.get_emails.0 }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-3 footer-grid" data-aos="zoom-in">
+      
+    </div>
+    <div class="col-lg-3 footer-grid" data-aos="zoom-in">
+      <div class="footer-title">
+        <h3>Subscribe</h3>
+      </div>
+      <p>Subscribe to our newsletter for innovative ways of how to grow your business and increase sales/profit</p>
+      <form action="#" method="post" class="newsletter">
+        <input class="email" type="email" placeholder="Your email..." required="">
+        <button class="btn1">
+          <i class="far fa-envelope"></i>
+        </button>
+      </form>
+      <div class="clearfix"></div>
+    </div>
+
   </div>
-  <div class="copyright pb-sm-5 pb-4 text-center">
-    <p>© {% snippet 'footer:copyright' safe=True %}2018 Grade. All Rights Reserved | Design by <a href="http://www.W3Layouts.com" target="_blank">W3Layouts</a>{% endsnippet %}</p>
-  </div>
+
+</div>

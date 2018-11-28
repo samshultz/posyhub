@@ -206,7 +206,9 @@ CONSTANCE_CONFIG_FIELDSETS = {
 }
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 CONSTANCE_IGNORE_ADMIN_VERSION_CHECK = True
-ZINNIA_PAGINATION = 3
+
+# ZINNIA SETTINGS
+ZINNIA_PAGINATION = 6
 
 # COMMENTS XTD SETTINGS
 COMMENTS_APP = 'fluent_comments'
@@ -214,3 +216,22 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # DJANGO ROBOTS SETTINGS
 ROBOTS_USE_SCHEME_IN_HOST = True
+
+# DJANGO SUIT CONFIG
+SUIT_CONFIG = {
+    "ADMIN_NAME": "Posyhub Admin",
+    'MENU_ICONS': {
+        'tagging': 'icon-tags',
+        'sites': 'icon-leaf',
+        'auth': 'icon-lock',
+        'services': 'icon-screenshot',
+        'about': 'icon-book',
+        'contact': 'icon-bookmark',
+        'constance': 'icon-cog',
+        'zinnia': 'icon-th',
+        'threadedcomments': 'icon-comment',
+        'django_comments': 'icon-comment',
+        'addendum': 'icon-pencil',
+        'robots': 'icon-fire'
+    },
+}

@@ -1,61 +1,67 @@
 {% load addendum_tags %}
-<!-- banner -->
-<section class="banner" id="home">
-  <div class="callbacks_container">
-    <ul class="rslides" id="slider3">
-      <li>
-        <div class="slider-info bg1 w3-agile-grid">
-          <div class="bs-slider-overlay">
-          <div class="banner-text container agile-info">
-            <h5 class="tag text-center mb-3 text-uppercase">We are professional </h5>
-            <h1 class="movetxt text-center agile-title text-uppercase">{% snippet 'home:greeting' %}Management Services{% endsnippet %}</h1>
-            <h2 class="movetxt text-center mb-3 agile-title text-uppercase">{% snippet 'home:what_we_offer' %}Best Solution {% endsnippet %}</h2>             
-            <a class="bt mt-4 text-capitalize" href="{% url 'about:about-us' %}" role="button"> read more
-            </a>
+<div class="banner">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <div class="carousel-caption">
+          <h3>Best Creative Agency for your needs</h3>
+
+          <div class="bnr-button">
+            <button type="button" class="btn btn-primary play" data-toggle="modal" data-target="#exampleModal">
+              <i class="fas fa-play"></i>
+            </button>
           </div>
+
+        </div>
+      </div>
+      <div class="carousel-item item2">
+        <div class="carousel-caption">
+          <h3>We Deliver Quality Projects.</h3>
+
+          <div class="bnr-button">
+            <button type="button" class="btn btn-primary play" data-toggle="modal" data-target="#exampleModal">
+              <i class="fas fa-play"></i>
+            </button>
           </div>
         </div>
-      </li>
-      <li>
-        <div class="slider-info bg2 w3-agile-grid">
-          <div class="bs-slider-overlay">
-          <div class="banner-text container agile-info">
-            <h5 class="tag text-center mb-3 text-uppercase">We are unique</h5>
-            <h4 class="movetxt text-center agile-title text-uppercase">{% snippet 'home:greeting2' %}Capital Management {% endsnippet %}</h4>
-            <h4 class="movetxt text-center mb-3 agile-title text-uppercase">{% snippet 'home:quality_service' %}Better Service {% endsnippet %}</h4>  
-            <a class="bt mt-4 text-capitalize" href="{% url 'about:about-us' %}" role="button"> read more
-            </a>
+      </div>
+      <div class="carousel-item item3">
+        <div class="carousel-caption">
+          <h3>Best Creative Agency for your needs</h3>
+
+          <div class="bnr-button">
+            <button type="button" class="btn btn-primary play" data-toggle="modal" data-target="#exampleModal">
+              <i class="fas fa-play"></i>
+            </button>
           </div>
+
+        </div>
+      </div>
+      <div class="carousel-item item4">
+        <div class="carousel-caption">
+          <h3>We Deliver Quality Projects.</h3>
+
+          <div class="bnr-button">
+            <button type="button" class="btn btn-primary play" data-toggle="modal" data-target="#exampleModal">
+              <i class="fas fa-play"></i>
+            </button>
           </div>
         </div>
-      </li>
-      <li>
-        <div class="slider-info bg3 w3-agile-grid">
-          <div class="bs-slider-overlay">
-          <div class="banner-text container agile-info">
-            <h5 class="tag text-center mb-3 text-uppercase">{% snippet 'banner:what_we_are' %}We are creative{% endsnippet %}</h5>
-            <h4 class="movetxt text-center agile-title text-uppercase">{% snippet 'banner:what_we_offer' %}Creative Solutions {% endsnippet %}</h4>
-            <h4 class="movetxt text-center mb-3 agile-title text-uppercase">{% snippet 'banner:service_quality' %}High Quality {% endsnippet %}</h4>  
-            <a class="bt mt-4 text-capitalize" href="#" data-toggle="modal" data-targ> read more
-            </a>
-          </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="slider-info bg4 w3-agile-grid">
-          <div class="bs-slider-overlay">
-          <div class="banner-text container agile-info">
-            <h5 class="tag text-center mb-3 text-uppercase">{% snippet 'banner:what_we_do' %}We make awesome designs{% endsnippet %}</h5>
-            <h4 class="movetxt text-center agile-title text-uppercase">{% snippet 'banner:unique_action' %}High Quality Designs{% endsnippet %}</h4>
-            <h4 class="movetxt text-center mb-3 agile-title text-uppercase">{% snippet 'banner:best_solution' %}Best Solution {% endsnippet %}</h4> 
-            <a class="bt mt-4 text-capitalize" href="{% url 'about:about-us' %}" role="button"> read more
-            </a>
-          </div>
-          </div>
-        </div>
-      </li>
-    </ul>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-</section>
-<!-- //banner -->
+</div>

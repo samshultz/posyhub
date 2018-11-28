@@ -1,90 +1,79 @@
 {% load static %}
 <!-- js -->
-    
-    <script type="text/javascript" src="{% static 'about/js/bootstrap.js' %}"></script> <!-- Necessary-JavaScript-File-For-Bootstrap --> 
+    	<!-- js -->
+	<script type="text/javascript" src="{% static 'about/js/jquery-2.2.3.min.js' %}"></script>
+	<!-- //js -->
+	<!-- simpleLightbox -->
+	<script src="{% static 'about/js/simpleLightbox.js' %}"></script>
+	<script>
+		$('.proj_gallery_grid a').simpleLightbox();
+	</script>
+	<!-- //simpleLightbox -->
+	<!-- flexSlider -->
+	<script defer src="{% static 'about/js/jquery.flexslider.js' %}"></script>
+	<script type="text/javascript">
+	 
+	  $(window).load(function(){
+		$('.flexslider').flexslider({
+		  animation: "slide",
+		  start: function(slider){
+			$('body').removeClass('loading');
+		  }
+		});
+	  });
+	</script>
+  
+	<!-- //flexSlider -->
+
+	<!-- stats -->
+	<script src="{% static 'about/js/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'about/js/jquery.countup.js' %}"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+	<!-- //stats -->
+	<!-- /js files -->
+	<link href="{% static 'about/css/aos.css' %}" rel='stylesheet prefetch' type="text/css" media="all" />
+	<link href="{% static 'about/css/aos-animation.css' %}" rel='stylesheet prefetch' type="text/css" media="all" />
+	<script src="{% static 'about/js/aos.js' %}"></script>
+	<script src="{% static 'about/js/aosindex.js' %}"></script>
+	<!-- //js files -->
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="{% static 'about/js/move-top.js' %}"></script>
+	<script type="text/javascript" src="{% static 'about/js/easing.js' %}"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 900);
+			});
+		});
+	</script>
+	<!-- start-smoth-scrolling -->
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+									var defaults = {
+							  			containerID: 'toTop', // fading element id
+										containerHoverID: 'toTopHover', // fading element hover id
+										scrollSpeed: 1200,
+										easingType: 'linear' 
+							 		};
+									*/
+
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<a href="#home" class="scroll" id="toTop" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> <!-- Necessary-JavaScript-File-For-Bootstrap --> 
     <!-- //js -->   
-    
-    <!-- Stats-Number-Scroller-Animation-JavaScript -->
-        <script src="{% static 'about/js/waypoints.min.js' %}"></script> 
-        <script src="{% static 'about/js/counterup.min.js' %}"></script> 
-        <script>
-            jQuery(document).ready(function( $ ) {
-                $('.counter').counterUp({
-                    delay: 100,
-                    time: 1000
-                });
-            });
-        </script>
-    <!-- //Stats-Number-Scroller-Animation-JavaScript -->
-    
-    <!-- Banner Responsiveslides -->
-    <script src="{% static 'about/js/responsiveslides.min.js' %}"></script>
-    <script>
-        // You can also use "$(window).load(function() {"
-        $(function () {
-            // Slideshow 4
-            $("#slider3").responsiveSlides({
-                auto: true,
-                pager: true,
-                nav: false,
-                speed: 500,
-                namespace: "callbacks",
-                before: function () {
-                    $('.events').append("<li>before event fired.</li>");
-                },
-                after: function () {
-                    $('.events').append("<li>after event fired.</li>");
-                }
-            });
-
-        });
-    </script>
-    <!-- // Banner Responsiveslides -->
-
-    <!-- start-smoth-scrolling -->
-    <script src="{% static 'about/js/SmoothScroll.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'about/js/move-top.js' %}"></script>
-    <script type="text/javascript" src="{% static 'about/js/easing.js' %}"></script>
-    <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event){     
-                event.preventDefault();
-                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-            });
-        });
-    </script>
-    <!-- here stars scrolling icon -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            /*
-                var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear' 
-                };
-            */
-                                
-            $().UItoTop({ easingType: 'easeOutQuart' });
-                                
-            });
-    </script>
-    <!-- //here ends scrolling icon -->
-    <!-- start-smoth-scrolling -->
-
-    <!-- FlexSlider-JavaScript -->
-    <script defer src="{% static 'about/js/jquery.flexslider.js' %}"></script>
-    <script type="text/javascript">
-        $(function(){
-            SyntaxHighlighter.all();
-                });
-                $(window).load(function(){
-                $('.flexslider').flexslider({
-                    animation: "slide",
-                    start: function(slider){
-                        $('body').removeClass('loading');
-                    }
-            });
-        });
-    </script>
-    <!-- //FlexSlider-JavaScript -->
+   

@@ -1,5 +1,7 @@
 {% extends "__base.html" %}
 
+{% load thumbnail %}
+
 {% block title %}
     {{ service.name }} - Our Services - {{ block.super }}
 {% endblock title %}
@@ -11,13 +13,15 @@
   <!-- about -->
   <section class="about py-5">
     <div class="container py-md-3 agile-info">
-      <h2 class="heading mb-md-5 mb-4 text-center">About Us</h2>
+      <h1 class="heading mb-md-5 mb-4 h2 text-center">{{ service.name }}</h1>
       <div class="row about-grids agile-info">
         <div class="col-lg-1"></div>
         <div class="col-lg-10 w3-agile-grid mb-lg-0 mb-5">
             
             {% if service.image %}
-                <img src="{{ service.image.url }}" alt="{{ service.title }}" height="300" width="300">
+              {% thumbnail service.image "1000x800" upscale=False as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ service.name }}" itemprop="contentUrl" class="img-fluid">
+              {% endthumbnail %}
             {% endif %}
                 
           <p>{{ service.description|safe|linebreaks }}</p>          

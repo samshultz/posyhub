@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from django.template.defaultfilters import truncatewords
+from django.utils.safestring import mark_safe
+
 
 from .models import Service
 
@@ -12,7 +14,7 @@ class ServiceAdmin(admin.ModelAdmin):
 
     def display_image(self, obj):
         if obj.image:
-            return format_html('<img src={} height="200" />'.format(obj.image.url))
+            return format_html('<img src={} height="100" width="100" />'.format(obj.image.url))
 
     def get_brief_description(self, obj):
-        return truncatewords(obj.description, 20)
+        return mark_safe(truncatewords(obj.description, 20))

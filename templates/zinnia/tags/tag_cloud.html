@@ -1,0 +1,17 @@
+{% load i18n %}
+
+  <div class="single-gd">
+
+      {% for tag in tags %}
+        
+      
+        <div>
+          <p>
+            <a href="{% url 'zinnia:tag_detail' tag.name %}"
+              title="{% blocktrans count entry_count=tag.count %}{{ entry_count }} entry tagged by {{ tag }}{% plural %}{{ entry_count }} entries tagged by {{ tag }}{% endblocktrans %}">{{ tag }}</a>
+          </p>
+        </div>
+      {% empty %}
+        <p><strong>No tags yet.</strong></p>
+      {% endfor %}
+    </div>

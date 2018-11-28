@@ -1,22 +1,78 @@
 {% load static zinnia %}
-<aside class="col-lg-4 single-left">
-  <div class="single-gd">
-    <img src="{% static 'about/images/a3.jpg' %}" class="img-fluid" alt="">
-    <h4>Sign up to our newsletter</h4>
-    <form action="#" method="post">
+<aside class="col-lg-4 single-left" data-aos="fade-left">
+    <div class="single-gd-wthree-agileits">
+      <h4>Sign up to our newsletter</h4>
+      <form action="#" method="post">
 
-      <input class="form-control" type="email" name="Email" placeholder="Email" required="">
-      <div class="button">
+        <input type="email" name="Email" placeholder="Email" required="">
+        <div class="button">
 
-        <input class="form-control" type="submit" value="Subscribe">
+          <input type="submit" value="Subscribe">
 
+        </div>
+      </form>
+    </div>
+    <div class="single-gd-wthree-agileits tech-btm" data-aos="fade-down">
+      <h4>Similar Entries </h4>
+      {% get_similar_entries 3 %}
+    </div>
+    <div class="single-gd-wthree-agileits tech-btm" data-aos="fade-down">
+      <h4>Recent Entries </h4>
+      {% get_recent_entries 3 %}
+    </div>
+    <div class="single-gd-wthree-agileits tech-btm" data-aos="fade-down">
+      <h4>Random Entries </h4>
+      {% get_random_entries 3 %}
+    </div>
+    <div class="single-gd-wthree-agileits">
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Categories
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                {% get_categories %}
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Tag Cloud
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                {% get_tag_cloud 9 %}
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Archives
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                {% get_archives_entries %}
+            </div>
+          </div>
+        </div>
       </div>
-    </form>
-  </div>
-  
-  {% get_similar_entries 5 %}
-  {% get_random_entries 5 %}
-  {% get_recent_entries 3 %}
-  {% get_categories %}
+    </div>
 
-</aside>
+  </aside>
+  
+  
+  

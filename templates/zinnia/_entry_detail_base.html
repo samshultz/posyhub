@@ -2,79 +2,100 @@
 {% load i18n %}
 {% load zinnia static comments %}
 {% load thumbnail %}
-
+ 
 {% block stylesheets %}
-  {{ block.super }}
-  <link rel="stylesheet" type="text/css" href="{% static 'fluent_comments/css/ajaxcomments.css' %}" />
+    {{ block.super }}
+    <link href="{% static 'about/css/blog.css' %}" type="text/css" rel="stylesheet" media="all">
+{% endblock stylesheets %}
 
-{% endblock stylesheets %} 
-
+{% block meta-description %}
+  {% if object.lead %}
+    {{ object.lead|truncatechars:"158" }}
+  {% else %}
+    {{ object.content|truncatechars:"158" }}
+  {% endif %}
+{% endblock meta-description %}
 
 {% block title %}
     {{ entry.title }} - {{ block.super }}
 {% endblock title %}
 
 {% block banner %}
-    {% include "posyhub/_banner.html" with page_title="Blog Detail Page" %}
+    {% include "posyhub/_banner.html" %}
 {% endblock banner %}
 
 {% block content %}
-    <section class="banner-bottom-w3ls-agileinfo py-5">
-      <!--/blog-->
-      <div class="container py-md-3">
-        <div class="row inner-sec-wthree-agileits">
-          <div class="col-lg-8 blog-sp">
-            <article class="blog-x row">
-              <div class="blog-img w3-agile-grid">
-                  {% if entry.image %}
-                  {% thumbnail entry.image "1600x800" as im %}
-                    <img src="{{ im.url }}" alt="{{ object.image_caption|default:object.title }}" itemprop="contentUrl" class="img-fluid">
-                  {% endthumbnail %}
-                  {% endif %}
-              </div>
+ <!--/blog-->
+ <section class="services">
+		<div class="container">
+			<div class="row inner-sec-w3layouts-agileinfo">
+				<div class="col-lg-8 blog-sp" data-aos="fade-right">
+					<article class="blog-x row">
+					{% if entry.image %}	
+						<div class="blog-img">
+							<a href="">
+								{% thumbnail entry.image "760x385" quality=80 crop="center" as im %}
+								  <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ object.image_caption|default:object.title }}" itemprop="contentUrl" class="img-fluid">
+								{% endthumbnail %}
+							</a>
+						</div>
+						{% endif %}
+						<div class="blog_info">
+							<h1>
+								{{ object.title }}
+							</h1>
+							<p>By
+								{% for author in object.authors.all %}
+									<a href="{{ author.get_absolute_url }}" class="user-blog" rel="author" 
+									   title="{% blocktrans %}Show all {{ author }}'s entries{% endblocktrans %}" 
+									   itemprop="url">
+									   {{ author }}{% if not forloop.last %}, {% endif %}
+									</a>
+								  {% endfor %} <span>on {{ object.publication_date }}</span>
+              </p>
+              
 
-              <div class="blog_info">
-                <h1>
-                  {{ entry.title|widont }}
-                </h1>
-                {% with authors=object.authors.all %}
-                  {% if authors|length %}
-                    {% for author in authors %}
-                      <p>By
-                        <a href="{{ author.get_absolute_url }}" 
-                          class="user-blog" 
-                          rel="author" 
-                          title="{% blocktrans %}Show all {{ author }}'s entries{% endblocktrans %}" 
-                          itemprop="url">{{ author }}
-                        </a>
-                      </p>{% if not forloop.last %}, {% endif %}
-                    {% endfor %}
-                  {% else %}
-                    {% trans "Written on" context "on date" %}
-                  {% endif %}
-                {% endwith %}
-                
+							{{ object.content|safe }}
+							<ul class="blog_list_agile_w3ls">
+								<li>
+									<a href="#">
+										<span class="fa fa-comment" aria-hidden="true"></span>
+										173</a>
+									<i>|</i>
+								</li>
+								<li>
+									<a href="#">
+										<span class="fa fa-heart" aria-hidden="true"></span>
+										10</a>
+									<i>|</i>
+								</li>
+								<li>
+									<a href="#">
+										<span class="fa fa-tag" aria-hidden="true"></span>
+										5</a>
+								</li>
+							</ul>
+							
+						</div>
+						<div class="clearfix"></div>
+					</article>
+					
+				</div>
+				{% include "posyhub/_entry_detail_sidebar.html" %}
 
-                <p>{{ object.content|safe|linebreaks }} </p>
-                
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <div class="addthis_inline_share_toolbox"></div>
-            
-              </div>
-              <div class="clearfix"></div>
-            </article>
-            
-          </div>
-          {% include "posyhub/_entry_detail_sidebar.html" %}
-          
+			</div>
 
-        </div>
-      </div>
-    </section>
+
+		</div>
+
+		</div>
+	</section>
+	<!--//blog-->
 {% endblock content %}
 
 {% block extra_js %}
   <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfc60847b6488af"></script>
-
+ <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox"></div>
 {% endblock extra_js %}
