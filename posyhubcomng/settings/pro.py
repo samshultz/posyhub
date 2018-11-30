@@ -11,7 +11,7 @@ ADMINS = (
     ('Lucky Pius', 'luckypius5@gmail.com')
 )
 
-SECRET_KEY = os.environ.get("SECRET_KEY", "*pgdt3h3ta7-i7_-319@k33+)(lbd8v58(yo1x!5zt4w7a_&xo=v-6mr_$vm*qa(!_*^(*&()*)*fdvsappmy0$f(v3any06v&1cw4c!gh%1x)@")
+SECRET_KEY = os.environ.get("SECRET_KEY", "*pgdt3h3ta7-i7_-319@k33+)(lb!_*^(*&()*)*fdvsappmy0$f(v3any06v&1cw4c!gh%1x)@")
 
 # DATABASES
 DATABASES = {

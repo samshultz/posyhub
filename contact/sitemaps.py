@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
-from .models import CompanyDetail
+from contact.models import CompanyDetail
 
 
 class ContactSitemap(Sitemap):
