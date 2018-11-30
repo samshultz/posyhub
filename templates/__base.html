@@ -2,11 +2,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126618915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-126618915-2');
+  </script>
+
   {% block meta_tags %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<meta name="keywords" content="Digital Biz a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<meta name="keywords" content="{% block meta-keywords %}posyhub,internet marketing,content marketing,SEO,Search Engine Optimization,web development and design, build a website,grow your business{% endblock meta-keywords %}" />
 
 	<script type="application/x-javascript">
 		addEventListener("load", function () {
@@ -24,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <title>{% block title %}{% trans 'Posyhub' %}{% endblock title %}</title>
     {% block stylesheets %}
       <link rel="icon" type="image/x-icon" sizes="32x32" href="{% static 'about/images/favicon.ico' %}" />
-      <link href="{% static 'about/css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 	    <link rel="stylesheet" href="{% static 'about/css/flexslider.css' %}" type="text/css" media="screen" property="" />
       <link rel="stylesheet" href="{% static 'about/css/style.css' %}" type="text/css" media="all" /> <!-- Style-CSS -->
       <link href="{% static 'about/css/simpleLightbox.css' %}" rel='stylesheet' type='text/css' /> 

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "posyhub-224118",
+  "private_key_id": "7c37f65f814b4d436129a2996057185780c6bf38",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCGmtOUAagB3dty\nwchy3+jIX21mDSHB2i4Wh1o2mFUiqG1Ql+lLXsKbOufHPVk7KIPXBNI6upv/tzKh\nwuu9Qd0hlugwl1Rd8IM/1NjaCP5oK3niz4mQiem4LxDNFu9E7T8e2swrukvuUwoG\nRj5D2LlB+oANGpuSfErAyvZSxwIgBO74TO1tjjmAutFRgn/6BWCD1tkKnh8C6l9O\noDeosssvYlGf8nhyTFLa0ahR3yYAIJaCYcEJsGR0Srovwygb46ClT3IvRV5J9B+v\nkK6AhGtxLTIMuphNdbQxJ2EslIa+FksxIyqIvXWFKZXEYmVYjA1WPTYSKwrySLUk\nc7B6e0EFAgMBAAECggEAFuAB++GqLSMIc8Cl8YvG0iKRg2nQ5lJPScnX1XZe5YRt\nC2i9n27rsJi6ofv1iZ2xhh2OIqfq8fKuupnXGTMzws0UCYn2Lv68N2FTNv6XSZm1\n3Ys6jCM74m6xMsFmiTauZu51CyteUxKunfFbDImsth89mrx+Ws8fnxL++INUg59D\n6lBF1Pk2MT16OMzldAzB1K0AYi1UYhj+A25kVi+HiL25jzZK0R0wMx3WO4l+D5px\ncC8Qhn+6pwmFb/iWerKMLZkBf43pBlp2MR7L+XnWUjjs24QWiSfe+9NKAsQJkZG0\nGeVE2A+BJ6MLh47lVSYnNZmpFnMLiwhmovog9t7MYQKBgQC7p9e2Gh/maqz+S1oV\nSh36Gem5m/BFgHug2vO6yAJ/J3pjFwTJ5tmpOGbQi666M9dToofi39VKpl0+gTD7\n/IUOXDdQ/jK9Stk69R8aFVIyhbeNXayB9JBpchxxHqsqPsK0xAMcBLqNNWEeYyFA\ncpnKrER4X+L1D/ws3AC35eyhUQKBgQC3oMO7HltM4ZX9ofNExiA+50UBkffiXz6q\n28nSkMV++MmA8R/tYKMwafPuau6QzWOul7YWEvTgHcxIAsn4d79pbPVxRX9WKVRe\nEP7YjX6nS1lYrxRKy1qJj5VEhkMWsyEehUY9z+PB3YScDP3eTCmrhH82e3Jj6ut2\nCQ+MiZNXdQKBgDdAU+LqDjppbkXxKbTa/biFqKtdnoDYM45I6To1aYbGuOI0BNTt\ng2ivkpYUin2Ihf25/Qhvnv07vniI0UNgNkzkGeVe8tGJGCyjv2SOooT9me2lhwU8\nXMivMHCd9weZMvrGO6QkQEkTTmUECuZO17k0v3Qxx0EgU79hh1Sd/e4BAoGBAI2d\nx7YUyFb3l0SfVM0Se6XnmHmIiIMl71+31+Oz0QyGdGkkDPp2UASzgfO6tjgonpr0\n1/IYNpBtirFyrS8Zsx5scLIl5fmeMDnHo7OBFE+TNdnGVMEGKdHzUSwi27Sy+3Td\nVfmvzbgizfXHszZwyKZFrhJnjCXw9Bz5CevZ4i9NAoGAD2q9ZxIkpoWjllMYaN+c\nDdA0D8M4AjS335CnZpTeb+e1NURO01LfIVu5DMs0v9SROk1RtepJ5O99/zqqjJTh\nj97SJ/wziZ9rUS2zJ/IuT+rokui1eSVUfPtk98NcmEwlU7fRdDN4kTbGK5a1zJ+m\nqfunHtD/spJDMFAeicdWdtM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "analytics@posyhub-224118.iam.gserviceaccount.com",
+  "client_id": "103984480526208382006",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/analytics%40posyhub-224118.iam.gserviceaccount.com"
+}

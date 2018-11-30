@@ -1,4 +1,7 @@
-{% load i18n %}
-<h3 class="mb-3 h4">{{ service.name }}</h3>
-<p>{{ service.description|safe|truncatewords:"30" }}</p>
-<a href="{% url 'services:service_detail' service.slug %}" role="button">Read More <span class="fas ml-1 fa-angle-double-right"></span> </a>
+<div class="col-lg-4 bottom-sub-grid text-center" data-aos="zoom-in">
+    <h4 class="sub-tittle_w3ls">{{ service.name }}</h4>
+    {{ service.description|truncatewords_html:"20"|safe }}
+    <p>
+      <a class="btn btn-secondary view" href="{% url 'services:service_detail' service.slug %}" title="{{ service.name }}" role="button" rel="bookmark">View details</a>
+    </p>
+  </div>

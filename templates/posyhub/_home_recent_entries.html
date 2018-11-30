@@ -1,0 +1,16 @@
+{% load thumbnail %}
+{% for entry in entries %}
+ <div class="col-lg-4 bottom-sub-grid text-center aos-init aos-animate" data-aos="zoom-in">
+  {% if entry.image %}
+    {% thumbnail entry.image "300x170" as im %}
+      <img src="{{ im.url }}" class="img-thumbnail" alt="{{ entry.title }}" style="margin:{{ im|margin:"300x170" }}">
+    {% endthumbnail %}
+  {% endif %}
+    
+    <h4 class="sub-tittle_w3ls">{{ entry.title }}</h4>
+    {{ entry.lead|default:entry.content|truncatewords_html:"20"|safe }}
+    <p>
+      <a class="btn btn-secondary view" href="{{ entry.get_absolute_url }}" role="button" title="{{ entry.title }}" rel="bookmark">View details</a>
+    </p>
+  </div>
+{% endfor %}

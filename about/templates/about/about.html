@@ -1,5 +1,7 @@
 {% extends "__base.html" %}
 
+{% load addendum_tags about_tags %}
+
 {% block title %}
     About Us - {{ block.super }}
 {% endblock title %}
@@ -11,59 +13,14 @@
   <!-- about -->
   <section class="banner-bottom">
 		<div class="container marketing">
-
+			<h3 class="text-center">About Us</h3>
 			<!-- Three columns of text below the carousel -->
 			<div class="row inner-sec-w3layouts-agileinfo">
 
-				<div class="col-lg-5 bt-bottom-info" data-aos="fade-left">
-					<h5>We help our customer to build Digital World</h5>
-
+				{% get_company_description as about_comp %}
+				<div class="col-lg-12 bt-bottom-info ab">
+					<p class="ab-para" data-aos="fade-right">{{ about_comp|safe }}</p>
 				</div>
-				<div class="col-lg-7 bt-bottom-info ab">
-					<img src="images/ab.png" class="img-responsive" alt=" ">
-					<p class="ab-para" data-aos="fade-right">Maecenas quis neque libero. Class aptent taciti.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Pellentesque
-						convallis diam consequat magna vulputate malesuada. Cras a ornare elit. Nulla viverra pharetra sem, eget pulvinar neque
-						pharetra ac.</p>
-				</div>
-			</div>
-			<div class="row inner-sec-w3layouts-agileinfo">
-				<div class="col-lg-4 bottom-sub-grid text-center" data-aos="zoom-in">
-					<div class="bt-icon">
-
-						<span class="fas fa-trophy"></span>
-					</div>
-
-					<h4 class="sub-tittle_w3ls">Stylish Design</h4>
-					<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-					<p>
-						<a class="btn btn-secondary view" href="single.html" role="button">View details</a>
-					</p>
-				</div>
-				<!-- /.col-lg-4 -->
-				<div class="col-lg-4 bottom-sub-grid text-center" data-aos="zoom-in">
-					<div class="bt-icon">
-						<span class="far fa-thumbs-up"></span>
-					</div>
-
-					<h4 class="sub-tittle_w3ls">Excellent Support</h4>
-					<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-					<p>
-						<a class="btn btn-secondary view" href="single.html" role="button">View details</a>
-					</p>
-				</div>
-				<!-- /.col-lg-4 -->
-				<div class="col-lg-4 bottom-sub-grid text-center" data-aos="zoom-in">
-					<div class="bt-icon">
-						<span class="fas fa-tv"></span>
-					</div>
-
-					<h4 class="sub-tittle_w3ls">Responsive</h4>
-					<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-					<p>
-						<a class="btn btn-secondary view" href="single.html" role="button">View details</a>
-					</p>
-				</div>
-				<!-- /.col-lg-4 -->
 			</div>
 
 		</div>

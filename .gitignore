@@ -3,7 +3,6 @@
 *.pyc
 __pycache__/
 settings/local.py
-pro.py
 db.sqlite3
 media/
 .env

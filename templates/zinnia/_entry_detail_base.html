@@ -8,6 +8,11 @@
     <link href="{% static 'about/css/blog.css' %}" type="text/css" rel="stylesheet" media="all">
 {% endblock stylesheets %}
 
+{% block meta-keywords %}
+	{% if object.tags %}
+		{{ object.tags }} {% else %} {{ block.super }}
+	{% endif %}
+{% endblock meta-keywords %}
 {% block meta-description %}
   {% if object.lead %}
     {{ object.lead|truncatechars:"158" }}
@@ -51,11 +56,11 @@
 									   itemprop="url">
 									   {{ author }}{% if not forloop.last %}, {% endif %}
 									</a>
-								  {% endfor %} <span>on {{ object.publication_date }}</span>
+								  {% endfor %} <span>on {{ object.publication_date|date:"F d,Y" }}</span>
               </p>
               
 
-							{{ object.content|safe }}
+							{{ object.content|html_thumbnails|safe }}
 							<ul class="blog_list_agile_w3ls">
 								<li>
 									<a href="#">
@@ -75,7 +80,8 @@
 										5</a>
 								</li>
 							</ul>
-							
+							<!-- Go to www.addthis.com/dashboard to customize your tools -->
+							<div class="addthis_inline_share_toolbox"></div>
 						</div>
 						<div class="clearfix"></div>
 					</article>
@@ -96,6 +102,5 @@
 {% block extra_js %}
   <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bfc60847b6488af"></script>
- <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <div class="addthis_inline_share_toolbox"></div>
+ 
 {% endblock extra_js %}

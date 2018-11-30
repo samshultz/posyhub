@@ -19,11 +19,11 @@
         <div class="col-lg-10 w3-agile-grid mb-lg-0 mb-5">
             
             {% if service.image %}
-              {% thumbnail service.image "1000x800" upscale=False as im %}
-                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ service.name }}" itemprop="contentUrl" class="img-fluid">
+              {% thumbnail service.image "760x385" as im %}
+                <img src="{{ im.url }}" style="margin:{{ im|margin:"760x385" }}" alt="{{ service.name }}" itemprop="contentUrl" class="img-fluid">
               {% endthumbnail %}
             {% endif %}
-                
+            <br>
           <p>{{ service.description|safe|linebreaks }}</p>          
         </div>
       </div>

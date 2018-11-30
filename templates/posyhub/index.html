@@ -1,7 +1,8 @@
 {% extends "../__base.html" %}
-
+{% load zinnia %}
 {% load static about_tags addendum_tags services_tags %}
 {% load i18n %}
+
 {% block banner %}
     {% include "./_home_banner.html" %}
 {% endblock banner %}
@@ -14,54 +15,18 @@
     <div class="row inner-sec-w3layouts-agileinfo">
 
       <div class="col-lg-5 bt-bottom-info" data-aos="fade-right">
-        <h5>We help our customer to build Digital World</h5>
+        <h5>{% snippet "home:what_we_do" %}We help our customer to build Digital World{% endsnippet %}</h5>
 
       </div>
       <div class="col-lg-7 bt-bottom-info" data-aos="fade-left">
-        <p>Maecenas quis neque libero. Class aptent taciti.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Pellentesque
-          convallis diam consequat magna vulputate malesuada. Cras a ornare elit. Nulla viverra pharetra sem, eget pulvinar neque
-          pharetra ac.</p>
+        {% get_company_description as about_comp %}
+        {{ about_comp|truncatewords_html:"45"|safe }}
+        <a href="{% url 'about:about-us' %}" title="Get to know more about us" itemprop="about us" rel="link">Learn more</a>
       </div>
     </div>
-    <h2 class="text-center">Services</h2><br>
+    <h2 class="text-center">Blog</h2><br>
     <div class="row inner-sec-w3layouts-agileinfo">
-      <div class="col-lg-4 bottom-sub-grid text-center aos-init aos-animate" data-aos="zoom-in">
-        <div class="bt-icon">
-
-          <span class="fas fa-trophy"></span>
-        </div>
-
-        <h4 class="sub-tittle_w3ls">Stylish Design</h4>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-        <p>
-          <a class="btn btn-secondary view" href="single.html" role="button">View details</a>
-        </p>
-      </div>
-      <!-- /.col-lg-4 -->
-      <div class="col-lg-4 bottom-sub-grid text-center aos-init aos-animate" data-aos="zoom-in">
-        <div class="bt-icon">
-          <span class="far fa-thumbs-up"></span>
-        </div>
-
-        <h4 class="sub-tittle_w3ls">Excellent Support</h4>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-        <p>
-          <a class="btn btn-secondary view" href="single.html" role="button">View details</a>
-        </p>
-      </div>
-      <!-- /.col-lg-4 -->
-      <div class="col-lg-4 bottom-sub-grid text-center aos-init aos-animate" data-aos="zoom-in">
-        <div class="bt-icon">
-          <span class="fas fa-tv"></span>
-        </div>
-
-        <h4 class="sub-tittle_w3ls">Responsive</h4>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-        <p>
-          <a class="btn btn-secondary view" href="single.html" role="button">View details</a>
-        </p>
-      </div>
-      <!-- /.col-lg-4 -->
+      {% get_recent_entries 6 "posyhub/_home_recent_entries.html" %}
     </div>
   </div>
   <!-- /.row -->
@@ -74,48 +39,38 @@
   <div class="container">
     <h3 class="tittle_w3ls">Services</h3>
     <div class="row inner-sec-w3layouts-agileinfo">
+      {% get_services 4 as services %}
       <div class="col-lg-4 grid_info_main" data-aos="flip-left">
-        <div class="grid_info">
+        
+        {% for service in services|slice:":2" %}
+          <div class="grid_info {% cycle '' 'second' %}">
           <div class="icon_info">
             <span class="icon">
-              <i class="fas fa-laptop"></i>
+              <i class="fas {% cycle 'fa-laptop' 'fa-search' %}"></i>
             </span>
-            <h5>Fully Responsive</h5>
-            <p>Lorem ipsum dolor sit amet,vehicula vel sapien et, feugiat sapien amet.</p>
+            <h5>{{ service.name }}</h5>
+            <p>{{ service.description|truncatewords_html:"20"|safe }}</p>
           </div>
         </div>
-        <div class="grid_info second">
-          <div class="icon_info">
-            <span class="icon">
-              <i class="far fa-clone"></i>
-            </span>
-            <h5>Layered PSD Files</h5>
-            <p>Lorem ipsum dolor sit amet,vehicula vel sapien et, feugiat sapien amet.</p>
-          </div>
-        </div>
+        {% endfor %}
+          
       </div>
       <div class="col-lg-4 grid_info_main mid" data-aos="flip-down">
-        <img src="{% static 'about/images/mid.png' %}" class="img-responsive" alt=" ">
+        <img src="{% static 'about/images/hello.gif' %}" class="img-responsive" alt="marketing servicex">
       </div>
       <div class="col-lg-4 grid_info_main" data-aos="flip-right">
-        <div class="grid_info">
+          {% for service in services|slice:"2:" %}
+          <div class="grid_info {% cycle '' 'second' %}">
           <div class="icon_info">
             <span class="icon">
-              <i class="fas fa-sitemap"></i>
+              <i class="fas {% cycle 'fa-users' 'fa-bullhorn' %}"></i>
             </span>
-            <h5>Site Builder</h5>
-            <p>Lorem ipsum dolor sit amet,vehicula vel sapien et, feugiat sapien amet.</p>
+            <h5>{{ service.name }}</h5>
+            <p>{{ service.description|truncatewords_html:"20"|safe }}</p>
           </div>
         </div>
-        <div class="grid_info second">
-          <div class="icon_info">
-            <span class="icon">
-              <i class="fab fa-android"></i>
-            </span>
-            <h5>Animation</h5>
-            <p>Lorem ipsum dolor sit amet,vehicula vel sapien et, feugiat sapien amet.</p>
-          </div>
-        </div>
+        {% endfor %}
+        
       </div>
 
 

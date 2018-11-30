@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'snippets',
 
     # third party apps
+    
     'sorl.thumbnail',
     'fluent_comments',
     'crispy_forms',

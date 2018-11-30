@@ -26,21 +26,8 @@ class Service(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         
-        if not self.id:
-            self.image = self.compressImage(self.image)
-            
-        
         super(Service, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('services:service_detail', kwargs={'slug': self.slug})
-    
-    def compressImage(self, uploadedImage):
-        imageTemproary = Image.open(uploadedImage)
-        outputIoStream = BytesIO()
-        # imageTemproaryResized = imageTemproary.resize( (1020,573) ) 
-        imageTemproary.save(outputIoStream , format='JPEG', quality=60)
-        outputIoStream.seek(0)
-        uploadedImage = InMemoryUploadedFile(outputIoStream,'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
-        return uploadedImage
