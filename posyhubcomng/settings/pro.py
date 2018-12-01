@@ -60,5 +60,3 @@ SECURE_HSTS_PRELOAD = True
 SECURE_FRAME_DENY = True
 X_FRAME_OPTIONS = "DENY"
 django_heroku.settings(locals())
-
-STATICFILES_STORAGE = 'about.storage.CustomManifestStaticFilesStorage'
