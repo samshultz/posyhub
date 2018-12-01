@@ -12,7 +12,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-posyhubcomng/static/
 *.py[cod]
 *$py.class
 
