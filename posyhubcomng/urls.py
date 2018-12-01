@@ -13,7 +13,7 @@ from zinnia.sitemaps import EntrySitemap #NOQA
 from zinnia.sitemaps import TagSitemap #NOQA
 
 from about.sitemaps import AboutSitemap
-# from contact.sitemaps import ContactSitemap
+from contact.sitemaps import ContactSitemap
 from services.sitemaps import ServiceSitemap
 
 sitemaps = {
@@ -23,7 +23,7 @@ sitemaps = {
     'authors': AuthorSitemap,
     'categories': CategorySitemap,
     'about': AboutSitemap,
-    # 'contacts': ContactSitemap,
+    'contacts': ContactSitemap,
     'services': ServiceSitemap
 }
 
