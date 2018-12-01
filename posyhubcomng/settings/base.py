@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'constance',
     'constance.backends.database',
-    'suit',
     'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.sitemaps',
