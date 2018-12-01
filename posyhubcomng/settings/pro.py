@@ -61,8 +61,4 @@ SECURE_FRAME_DENY = True
 X_FRAME_OPTIONS = "DENY"
 django_heroku.settings(locals())
 
-from django.contrib.staticfiles.storage import ManifestStaticFilesStorage
-class CustomManifestStaticFilesStorage(ManifestStaticFilesStorage):
-    manifest_strict = False
-    
-STATICFILES_STORAGE = 'CustomManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'about.storage.CustomManifestStaticFilesStorage'
