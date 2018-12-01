@@ -40,6 +40,7 @@ urlpatterns = [
     url(r'^sitemap-(?P<section>.+)\.xml$', sitemap, {'sitemaps': sitemaps}, 
         name='django.contrib.sitemaps.views.sitemap'),
     url(r'^robots\.txt', include('robots.urls')),
+    url(r'^django-rq/', include('django_rq.urls')),
     url(r'^$', TemplateView.as_view(template_name="posyhub/index.html"), name="home")
 ]
 

@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'snippets',
 
     # third party apps
-    
+    "django_rq",
     'sorl.thumbnail',
     'fluent_comments',
     'crispy_forms',
@@ -233,3 +233,4 @@ SUIT_CONFIG = {
         'robots': 'icon-fire'
     },
 }
+

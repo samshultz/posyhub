@@ -61,3 +61,10 @@ SECURE_HSTS_PRELOAD = True
 SECURE_FRAME_DENY = True
 X_FRAME_OPTIONS = "DENY"
 django_heroku.settings(locals())
+
+RQ_QUEUES = {
+    'default': {
+        'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'),
+        'DEFAULT_TIMEOUT': 360,
+    },
+}
