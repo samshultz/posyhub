@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from about.views import DisplayAboutView
+from .views import DisplayAboutView
 
 
 urlpatterns = [

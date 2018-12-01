@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from contact.views import ContactView
+from .views import ContactView
 
 
 urlpatterns = [
