@@ -3,7 +3,7 @@ import django_heroku
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["www.posyhub.com", "posyhub.com", "posyhub.com.ng", "www.posyhub.com.ng", "*.posyhub.com.ng"]
+ALLOWED_HOSTS = ["posyhub.herokuapp.com","www.posyhub.com", "posyhub.com", "posyhub.com.ng", "www.posyhub.com.ng", "*.posyhub.com.ng"]
 
 
 ADMINS = (
