@@ -1,3 +1,4 @@
+import os
 from django.contrib.staticfiles.storage import ManifestStaticFilesStorage
 from django.utils.six.moves.urllib.parse import (
     unquote, urlsplit, urlunsplit,
