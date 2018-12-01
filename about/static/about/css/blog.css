@@ -14,7 +14,6 @@ body a:focus {
 }
 
 .demo-bg {
-    background: url(../images/b2.jpg) no-repeat;
     min-height: 425px;
     background-size: cover;
     -webkit-background-size: cover;
