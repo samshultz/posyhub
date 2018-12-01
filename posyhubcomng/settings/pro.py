@@ -65,6 +65,6 @@ django_heroku.settings(locals())
 RQ_QUEUES = {
     'default': {
         'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'),
-        'DEFAULT_TIMEOUT': 360,
+        'DEFAULT_TIMEOUT': 60000,
     },
 }
