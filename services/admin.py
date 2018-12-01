@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.template.defaultfilters import truncatewords
 from django.utils.safestring import mark_safe
-
+from rq import Queue
+from posyhubcomng.worker import conn
 
 from .models import Service
 
@@ -18,3 +19,7 @@ class ServiceAdmin(admin.ModelAdmin):
 
     def get_brief_description(self, obj):
         return mark_safe(truncatewords(obj.description, 20))
+
+    def save_model(self, request, obj, form, change):
+        q = Queue(connection=conn)
+        result = q.enqueue(super().save_model, {'request': request, 'obj': obj, 'form':form, 'change':change})

@@ -1,5 +1,3 @@
-from rq import Queue
-from posyhubcomng.worker import conn
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
@@ -33,6 +31,3 @@ class Service(models.Model):
         from django.urls import reverse
         return reverse('services:service_detail', kwargs={'slug': self.slug})
 
-
-q = Queue(connection=conn)
-result = q.enqueue(Service.save, 'http://heroku.com')
