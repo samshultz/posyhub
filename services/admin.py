@@ -4,7 +4,7 @@ from django.template.defaultfilters import truncatewords
 from django.utils.safestring import mark_safe
 from rq import Queue
 from posyhubcomng.worker import conn
- import django_rq
+import django_rq
 from .models import Service
 
 
