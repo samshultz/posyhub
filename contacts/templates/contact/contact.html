@@ -1,0 +1,96 @@
+{% extends "__base.html" %}
+
+{% load contact_tags static %}
+{% load widget_tweaks %}
+
+{% block stylesheets %}
+  {{ block.super }}
+  <link href="{% static 'about/css/contact.css' %}" rel='stylesheet' type='text/css' />
+{% endblock stylesheets %}
+{% block title %}
+    Contact Us - {{ block.super }}
+{% endblock title %}
+
+{% block banner %}
+    {% include "posyhub/_banner.html" %}
+{% endblock banner %}
+
+{% block content %}
+  {% get_company_detail as detail %}
+<!--/contact-->
+<section class="services">
+		<div class="container">
+			<h3 class="tittle_w3ls">Contact Us</h3>
+			<div class="row inner-sec-w3layouts-agileinfo">
+				<div class="contact-map">
+
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100949.24429313939!2d-122.44206553967531!3d37.75102885910819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan+Francisco%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1472190196783"
+					    class="map" style="border:0" allowfullscreen=""></iframe>
+				</div>
+				<div class="address row">
+					<div class="col-md-4 address-grid-wthree-agileits" data-aos="zoom-out">
+						<div class="address-info">
+							<div class="address-left">
+								<span class="fas fa-phone-volume" aria-hidden="true"></span>
+							</div>
+							<div class="address-right">
+								<h6>Phone Number</h6>
+								<p>
+                {% for no in detail.get_phone_numbers %}
+                  {{ no }}{% if not forloop.last %},{% endif %}
+                {% endfor %}
+                  </p>
+
+							</div>
+
+						</div>
+					</div>
+					<div class="col-md-4 address-grid-wthree-agileits" data-aos="zoom-out">
+						<div class="address-info">
+							<div class="address-left">
+								<span class="far fa-envelope" aria-hidden="true"></span>
+							</div>
+							<div class="address-right">
+								<h6>Email Address</h6>
+								<p>Email :
+									<a href="mailto:{{ detail.get_emails.0 }}"> {{ detail.get_emails.0 }}</a>
+								</p>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-md-4 address-grid-wthree-agileits" data-aos="zoom-out">
+						<div class="address-info">
+							<div class="address-left">
+								<span class="fas fa-map-marker-alt" aria-hidden="true"></span>
+							</div>
+							<div class="address-right">
+								<h6>Location</h6>
+								<p>{{ detail.get_addresses.0 }}
+
+								</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="contact_grid_right">
+					<h6>Please fill this form to contact with us.</h6>
+					<form action="" method="post">
+            {% csrf_token %}
+						<div class="contact_left_grid">
+              {% render_field form.name placeholder=form.name.label required="" %}
+              {% render_field form.email placeholder=form.email.label %}
+              {% render_field form.phone_no placeholder=form.phone_no.label required="" %}
+              {% render_field form.message placeholder=form.message.label required="" %}
+							<input type="submit" value="Submit">
+							<input type="reset" value="Clear">
+							<div class="clearfix"> </div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--//contact-->
+{% endblock content %}

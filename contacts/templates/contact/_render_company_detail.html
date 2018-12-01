@@ -1,0 +1,30 @@
+<ul class="id_company_detail">
+    <li>Company Name: {{ company_detail.name }}</li>  
+    <li class="phone-no">Phone Number(s):
+        <ul>
+            
+            {% for phone_no in company_detail.get_phone_numbers %}
+                <li>{{ phone_no }}</li>
+            {% endfor %}
+                
+        </ul>
+    </li> 
+    <li class="email">Email: 
+        <ul>
+            {% for email in company_detail.get_emails %}
+                <li>{{ email }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    
+    
+        
+    <li class="address">Address:
+        <ul>
+            {% for addr in company_detail.get_addresses %}
+                <li>{{ addr }}</li>
+            {% endfor %}
+        </ul>
+        
+    </li>
+</ul>
