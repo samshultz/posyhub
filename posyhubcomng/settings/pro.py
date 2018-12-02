@@ -1,7 +1,7 @@
 from .base import *
 import django_heroku 
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["posyhub.herokuapp.com","www.posyhub.com", "posyhub.com", "posyhub.com.ng", "www.posyhub.com.ng", "*.posyhub.com.ng"]
 

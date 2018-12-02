@@ -21,5 +21,6 @@ class ServiceAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         q = django_rq.get_queue('high')
-        return q.enqueue(super().save_model, request, obj, form, change)
+        s = super(ServiceAdmin, self).save_model
+        return q.enqueue(s, request, obj, form, change)
     
