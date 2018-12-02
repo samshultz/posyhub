@@ -18,9 +18,3 @@ class ServiceAdmin(admin.ModelAdmin):
 
     def get_brief_description(self, obj):
         return mark_safe(truncatewords(obj.description, 20))
-
-    def save_model(self, request, obj, form, change):
-        q = django_rq.get_queue('high')
-        s = super(ServiceAdmin, self).save_model
-        return q.enqueue(s, request, obj, form, change)
-    
