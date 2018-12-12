@@ -1,0 +1,26 @@
+{% extends "__base.html" %}
+
+
+{% block banner %}
+  {% include "posyhub/_banner.html" %}
+{% endblock banner %}
+
+{% block title %}
+  Permission Denied
+{% endblock title %}
+{% block content %}
+  <!--/404-->
+	<section class="services">
+		<div class="container">
+			<div class="inner-sec-w3layouts-agileinfo">
+				<div class="error-404" data-aos="fade-down">
+					<h4>Permission Denied</h4>
+					<p>Sorry, you don't have the permission to perform this action.</p>
+					<a class="b-home" href="{% url 'home' %}">Back to Home</a>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!--//404-->
+{% endblock content %}

@@ -1,6 +1,6 @@
 {% load static i18n %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126618915-2"></script>
@@ -13,11 +13,10 @@
   </script>
 
   {% block meta_tags %}
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="utf-8">
-	<meta name="keywords" content="{% block meta-keywords %}posyhub,internet marketing,content marketing,SEO,Search Engine Optimization,web development and design, build a website,grow your business{% endblock meta-keywords %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 
-	<script type="application/x-javascript">
+	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
 		}, false);
@@ -26,20 +25,18 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
-    <meta name="description" content="{% block meta-description %}{% endblock meta-description %}" />
-  
+
   {% endblock meta_tags %}
 
   <title>{% block title %}{% trans 'Posyhub' %}{% endblock title %}</title>
     {% block stylesheets %}
       <link rel="icon" type="image/x-icon" sizes="32x32" href="{% static 'about/images/favicon.ico' %}" />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-	    <link rel="stylesheet" href="{% static 'about/css/flexslider.css' %}" type="text/css" media="screen" property="" />
-      <link rel="stylesheet" href="{% static 'about/css/style.css' %}" type="text/css" media="all" /> <!-- Style-CSS -->
-      <link href="{% static 'about/css/simpleLightbox.css' %}" rel='stylesheet' type='text/css' /> 
+	  <link rel="stylesheet" href="{% static 'about/css/style.css' %}" type="text/css" media="all" /> <!-- Style-CSS -->
+      <link href="{% static 'about/css/simpleLightbox.css' %}" rel='stylesheet' type='text/css' />
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous"> <!-- Font-Awesome-Icons-CSS -->
       <!-- //css files -->
-      <link href="//fonts.googleapis.com/css?family=Poppins:100i,200,200i,300,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+      <link href="//fonts.googleapis.com/css?family=Poppins:100i,200,200i,300,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet" />
     <!--//web font-->
     {% endblock stylesheets %}
   {% block extra_head %}{% endblock extra_head %}
@@ -57,22 +54,37 @@
   <footer>
     {% include "posyhub/_footer.html" %}
   </footer>
-  
+
   <div class="copyright">
     {% include "posyhub/_copyright.html" %}
   </div>
-  
+
   {% block modal %}
-      
+
   {% endblock modal %}
+
   {% block javascript %}
       {% include "posyhub/_js.html" %}
   {% endblock javascript %}
 
-  
+
   {% block extra_js %}
-    
+
   {% endblock extra_js %}
-    
+
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5c04445440105007f37aa4e4/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
 </body>
 </html>

@@ -7,7 +7,7 @@
     {{ block.super }}
     <link href="{% static 'about/css/blog.css' %}" type="text/css" rel="stylesheet" media="all">
 {% endblock stylesheets %}
-    
+
 {% block banner %}
     {% include "posyhub/_banner.html" with page_title="Blog Page" %}
 {% endblock banner %}
@@ -36,7 +36,7 @@
 {% endblock meta-description %}
 
 {% block title %}
-    
+
         {% if category %}
             {% blocktrans with object=category %}Category {{ object }}{% endblocktrans %}
         {% endif %}
@@ -55,21 +55,21 @@
     <!--/blog-->
 	<section class="services">
             <div class="container">
-                <h3 class="tittle_w3ls">Latest Blog Posts</h3>
+                <h3 class="tittle_w3ls">{% if pattern %}Search results for "{{ pattern }}"{% else %}Latest Blog Posts{% endif %}</h3>
                 <div class="row inner-sec-w3layouts-agileinfo">
                     <div class="col-lg-8 blog-sp"  data-aos="zoom-in">
                         {% for object in object_list|slice:":2" %}
-                            
+
                             {% with forloop.counter as counter %}
                                 {% include "posyhub/_blog_list.html" with post=object counter=counter %}
                             {% endwith %}
                         {% endfor %}
                     </div>
-                    
+
                     {% for object in object_list|slice:"2:4" %}
                         {% include "posyhub/_blog_list2.html" with post=object %}
                     {% endfor %}
-                        
+
                     <div class="col-lg-8 blog-sp" data-aos="zoom-in">
                         {% for object in object_list|slice:"4:6" %}
                             {% with forloop.counter as counter %}
@@ -80,9 +80,9 @@
                     {% if is_paginated %}
                         {% zinnia_pagination page_obj %}
                     {% endif %}
-                    
+
                 </div>
-    
+
             </div>
         </section>
         <!--//blog-->

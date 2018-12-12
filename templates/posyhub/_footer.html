@@ -26,18 +26,18 @@
         <ul>
           <li class="hd">Phone:{{ comp.get_phone_numbers.0 }}</li>
           <li class="hd">Email:
-            <a href="mailto:{{ comp.get_emails.0 }}">{{ comp.get_emails.0 }}</a>
+            <a href="mailto:{{ comp.get_emails.0 }}" title="Email us">{{ comp.get_emails.0 }}</a>
           </li>
         </ul>
       </div>
     </div>
-    
+
     <div class="col-lg-4 footer-grid" data-aos="zoom-in">
       <div class="footer-title">
         <h3>Subscribe</h3>
       </div>
       <p>Subscribe to our newsletter for innovative ways of how to grow your business and increase sales/profit</p>
-      <form action="#" method="post" class="newsletter">
+      <form id="theform" name="theform" action="https://my.sendinblue.com/users/subscribeembed/js_id/3s8y9/id/1" class="newsletter">
         <input class="email" type="email" placeholder="Your email..." required="">
         <button class="btn1">
           <i class="far fa-envelope"></i>

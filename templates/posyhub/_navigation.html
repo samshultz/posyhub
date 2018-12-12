@@ -1,6 +1,6 @@
 {% load addendum_tags static %}
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <a class="navbar-brand" href="{% url 'home' %}">
+  <a class="navbar-brand" href="{% url 'home' %}" title="posyhub logo">
     <i class="fab fa-digital-ocean"></i> posyhub</a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -9,14 +9,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mx-auto tp-nav text-center">
       <li class="nav-item {% if active == 'home' %}active{% endif %}">
-        <a class="nav-link" href="{% url 'home' %}">Home
+        <a class="nav-link" href="{% url 'home' %}" title="Go to homepage">Home
             {% if active == 'home' %}
               <span class="sr-only">(current)</span>
             {% endif %}
           </a>
         </li>
         <li class="nav-item {% if active == 'about' %}active{% endif %}">
-          <a class="nav-link" href="{% url 'about:about-us' %}">About
+          <a class="nav-link" href="{% url 'about:about-us' %}" title="Learn more about us">About
 
             {% if active == 'about' %}
               <span class="sr-only">(current)</span>
@@ -24,31 +24,34 @@
             </a>
           </li>
           <li class="nav-item {% if active == 'blog' %}active{% endif %}">
-            <a class="nav-link" href="/blog">Blog
+            <a class="nav-link" href="/blog" title="Go to blog">Blog
               {% if active == 'blog' %}
                 <span class="sr-only">(current)</span>
                 {% endif %}
               </a>
             </li>
-            
+
       <li class="nav-item {% if active == 'services' %}active{% endif %}">
-        <a class="nav-link" href="{% url 'services:services_list' %}">Services
+        <a class="nav-link" href="{% url 'services:services_list' %}" title="Services we render">Services
           {% if active == 'services' %}
             <span class="sr-only">(current)</span>
           {% endif %}
         </a>
       </li>
       <li class="nav-item {% if active == 'contact' %}active{% endif %}">
-        <a class="nav-link" href="{% url 'contact:contact-us' %}">Contact
+        <a class="nav-link" href="{% url 'contact:contact-us' %}" title="click to contact posyhub">Contact
           {% if menu == 'contact' %}
             <span class="sr-only">(current)</span>
           {% endif %}
         </a>
       </li>
     </ul>
-    <form action="#" method="post" class="form-inline my-2 my-lg-0 search">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search here..." name="Search" required="">
+    <form action="{% url 'zinnia:entry_search' %}" method="get" class="form-inline my-2 my-lg-0 search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search here..." name="pattern" id="searchbox" required="" {% if pattern %}value="{{ pattern }}"{% endif %}>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <a title="You can use - to exclude words or phrases, &quot;double quotes&quot; for exact phrases and the AND/OR boolean operators combined with parenthesis for complex queries.">
+        <img src="{% static "zinnia/theme/img/help.png" %}" alt="?" class="help" width="14" height="14" />
+      </a>
     </form>
 
   </div>

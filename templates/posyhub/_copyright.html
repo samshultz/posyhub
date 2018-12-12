@@ -1,38 +1,44 @@
-
+{% load addendum_tags %}
   <div class="container">
     <div class="copyrighttop" data-aos="fade-left">
       <ul>
         <li>
           <h4>Follow us on:</h4>
         </li>
+        {% if config.Facebook %}
         <li>
-          <a class="facebook" href="#">
+          <a class="facebook" href="{{ config.Facebook }}" title="Like posyhub on facebook">
             <i class="fab fa-facebook-f"></i>
           </a>
         </li>
+        {% endif %}
+        {% if config.Twitter %}
         <li>
-          <a class="facebook" href="#">
+          <a class="facebook" href="{{ config.Twitter }}" title="follow posyhub on twitter">
             <i class="fab fa-twitter"></i>
           </a>
         </li>
+        {% endif %}
+        {% if config.Google_plus %}
         <li>
-          <a class="facebook" href="#">
+          <a class="facebook" href="{{ config.Google_plus }}" title="visit our google page">
             <i class="fab fa-google-plus-g"></i>
           </a>
         </li>
+        {% endif %}
+        {% if config.LinkedIn %}
         <li>
-          <a class="facebook" href="#">
-            <i class="fab fa-pinterest-p"></i>
+          <a class="facebook" href="{{ config.LinkedIn }}" title="Visit our linkedin page">
+            <i class="fab fa-linkedin"></i>
           </a>
         </li>
+        {% endif %}
       </ul>
     </div>
     <div class="copyrightbottom" data-aos="fade-right">
-      <p>© 2018 Digital Biz. All Rights Reserved | Design by
-        <a href="http://w3layouts.com/">W3layouts</a>
+      <p>© {% snippet 'copyright' safe=True %}2018 Digital Biz. All Rights Reserved{% endsnippet %}
       </p>
 
     </div>
     <div class="clearfix"></div>
   </div>
-\

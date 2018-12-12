@@ -1,6 +1,11 @@
 {% extends "__base.html" %}
-{% load i18n %}
+{% load i18n static %}
 {% load zinnia %}
+
+{% block stylesheets %}
+    {{ block.super }}
+    <link href="{% static 'about/css/blog.css' %}" type="text/css" rel="stylesheet" media="all">
+{% endblock stylesheets %}
 
 {% block title %}{% trans "Sitemap" %}{% endblock title %}
 
@@ -18,8 +23,8 @@
       <div class="col-lg-8 blog-sp">
         <article class="blog-x row">
 
-          <div class="">
-          
+          <div class="blog_info">
+
             <h2>{% trans "Entries per categories" %}</h2>
             {% for category in categories %}
             <br>
@@ -27,7 +32,7 @@
             <ul>
               {% for entry in category.entries_published.all %}
               <li>
-                <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}</a>
+                <p><a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}</a></p>
                 {% with comment_count=entry.comment_count %}
                 {% if comment_count %}
                 - {{ comment_count }} {% trans "comment" %}{{ comment_count|pluralize }}
@@ -45,12 +50,12 @@
             <div class="montharchives">
             <h2>{% trans "Monthly archives" %}</h2>
             {% get_archives_entries %}
-          </div>  
+          </div>
           </div>
           <div class="clearfix"></div>
-         
+
         </article>
-        
+
       </div>
       {% include "posyhub/_entry_detail_sidebar.html" %}
 

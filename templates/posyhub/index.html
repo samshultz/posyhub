@@ -1,11 +1,24 @@
-{% extends "../__base.html" %}
+{% extends "__base.html" %}
 {% load zinnia %}
 {% load static about_tags addendum_tags services_tags %}
 {% load i18n %}
 
+{% block title %}
+    {{ block.super }} - Best Web Design/Development and Internet Marketing Agency in Nigeria
+{% endblock title %}
+
 {% block banner %}
     {% include "./_home_banner.html" %}
 {% endblock banner %}
+
+{% block extra_head %}
+    <meta name="keywords" content="posyhub,internet marketing,content marketing,SEO,Search Engine Optimization,web development and design, build a website,grow your business" />
+    <meta name="description" content="Posyhub is a web design/development and internet marketing firm in Nigeria geared towards promoting individuals and businesses through the power of the internet" />
+    <meta property="og:title" content="Posyhub - A Web Design/Development and Internet Marketing Agency in Nigeria" />
+    <meta property="og:url" content="http://www.posyhub.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Posyhub is a web design/development and internet marketing firm in Nigeria geared towards promoting individuals and businesses through the power of the internet" />
+{% endblock %}
 
 {% block content %}
 <section class="banner-bottom">
@@ -20,7 +33,7 @@
       </div>
       <div class="col-lg-7 bt-bottom-info" data-aos="fade-left">
         {% get_company_description as about_comp %}
-        {{ about_comp|truncatewords_html:"45"|safe }}
+        {{ about_comp|truncatewords_html:"30"|safe }}
         <a href="{% url 'about:about-us' %}" title="Get to know more about us" itemprop="about us" rel="link">Learn more</a>
       </div>
     </div>
@@ -41,7 +54,7 @@
     <div class="row inner-sec-w3layouts-agileinfo">
       {% get_services 4 as services %}
       <div class="col-lg-4 grid_info_main" data-aos="flip-left">
-        
+
         {% for service in services|slice:":2" %}
           <div class="grid_info {% cycle '' 'second' %}">
           <div class="icon_info">
@@ -53,7 +66,7 @@
           </div>
         </div>
         {% endfor %}
-          
+
       </div>
       <div class="col-lg-4 grid_info_main mid" data-aos="flip-down">
         <img src="{% static 'about/images/hello.gif' %}" class="img-responsive" alt="marketing servicex">
@@ -70,7 +83,7 @@
           </div>
         </div>
         {% endfor %}
-        
+
       </div>
 
 

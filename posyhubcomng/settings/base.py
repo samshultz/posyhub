@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'snippets',
 
     # third party apps
-    "django_rq",
     'sorl.thumbnail',
     'fluent_comments',
     'crispy_forms',
@@ -72,6 +71,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'posyhubcomng.urls'
@@ -178,7 +180,7 @@ CKEDITOR_CONFIGS = {
              'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', '-',
                        'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-']},
             {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
-            {'name': 'insert', 'items': ['Image']}, 
+            {'name': 'insert', 'items': ['Image']},
             {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
         ]
     }
@@ -193,7 +195,7 @@ CONSTANCE_CONFIG = {
     'Facebook': ('', 'The URL to your facebook page', 'url_field'),
     'Twitter': ('', 'The URL of your twitter page', 'url_field'),
     'LinkedIn': ('', 'The URL of your LinkedIn page', 'url_field'),
-    'Google+': ('', 'The URL of your Google plus page', 'url_field'),
+    'Google_plus': ('', 'The URL of your Google plus page', 'url_field'),
     'OPENING_HOURS': ('8AM', 'The time your office opens for work everyday'),
     'CLOSING_HOURS': ('6PM', 'The time your office closes from work everyday')
 }
@@ -234,3 +236,4 @@ SUIT_CONFIG = {
     },
 }
 
+HTML_MINIFY = True

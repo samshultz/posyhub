@@ -1,0 +1,26 @@
+{% extends "__base.html" %}
+
+
+{% block banner %}
+  {% include "posyhub/_banner.html" %}
+{% endblock banner %}
+
+{% block title %}
+  Page Not Found
+{% endblock title %}
+{% block content %}
+  <!--/404-->
+	<section class="services">
+		<div class="container">
+			<div class="inner-sec-w3layouts-agileinfo">
+				<div class="error-404" data-aos="fade-down">
+					<h4>404</h4>
+					<p>Oops ! Nothing to See here.</p>
+					<a class="b-home" href="{% url 'home' %}">Back to Home</a>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!--//404-->
+{% endblock content %}

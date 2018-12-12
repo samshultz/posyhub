@@ -28,7 +28,7 @@ sitemaps = {
 }
 
 urlpatterns = [
-    
+
     url(r'^admin/', admin.site.urls),
     url(r'^contact-us/', include('contacts.urls', namespace="contact")),
     url(r'^about/', include('about.urls', namespace="about")),
@@ -37,10 +37,10 @@ urlpatterns = [
     url(r'^blog/comments/', include('fluent_comments.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^sitemap\.xml$', index, {'sitemaps': sitemaps}),
-    url(r'^sitemap-(?P<section>.+)\.xml$', sitemap, {'sitemaps': sitemaps}, 
+    url(r'^sitemap-(?P<section>.+)\.xml$', sitemap, {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap'),
-    url(r'^robots\.txt', include('robots.urls')),
-    url(r'^django-rq/', include('django_rq.urls')),
+    url(r'^robots\.txt$', include('robots.urls')),
+    url(r'^sitemap\.html$', include('zinnia.urls.sitemap')),
     url(r'^$', TemplateView.as_view(template_name="posyhub/index.html"), name="home")
 ]
 
