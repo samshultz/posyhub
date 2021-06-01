@@ -75,7 +75,7 @@ rsa==4.0
 six==1.11.0
 sorl-thumbnail==12.5.0
 uritemplate==3.0.0
-urllib3==1.24.1
+urllib3==1.26.5
 webencodings==0.5.1
 whitenoise==4.1.2
 zinnia-wysiwyg-ckeditor==1.3
